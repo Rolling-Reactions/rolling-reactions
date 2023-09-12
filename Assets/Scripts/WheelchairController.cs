@@ -36,13 +36,13 @@ public class WheelchairController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float torqueLeft = maxTorque * Input.GetAxis("Left wheel");
-        float torqueRight = maxTorque * Input.GetAxis("Right wheel");
+        //float torqueLeft = maxTorque * Input.GetAxis("Left wheel");
+        //float torqueRight = maxTorque * Input.GetAxis("Right wheel");
 
-        axleInfo.leftWheel.motorTorque = torqueLeft;
-        axleInfo.rightWheel.motorTorque = torqueRight;
+        //axleInfo.leftWheel.motorTorque = torqueLeft;
+        //axleInfo.rightWheel.motorTorque = torqueRight;
 
-        Debug.Log(torqueLeft + " " + torqueRight);
+        //Debug.Log(torqueLeft + " " + torqueRight);
     }
 }
 
