@@ -1109,4 +1109,36 @@ InputManager:
     type: 2
     axis: 5
     joyNum: 0
+  - serializedVersion: 3
+    m_Name: Left wheel
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: a
+    positiveButton: q
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.001
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 5
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Right wheel
+    descriptiveName: 
+    descriptiveNegativeName: e
+    negativeButton: d
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.001
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 5
+    joyNum: 0
   m_UsePhysicalKeys: 0
