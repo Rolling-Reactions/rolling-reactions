@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844563979296410920}
   - component: {fileID: 3285979966676055236}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: small right collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ WheelCollider:
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0
-  m_ForceAppPointDistance: 1
+  m_ForceAppPointDistance: 0.1
   m_Mass: 0.1
   m_WheelDampingRate: 1
   m_ForwardFriction:
@@ -81,7 +81,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1255624927996425597}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 392933914781459959}
   - component: {fileID: 5262457099077374660}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: right collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ WheelCollider:
     damper: 0
     targetPosition: 0
   m_SuspensionDistance: 0
-  m_ForceAppPointDistance: 1
+  m_ForceAppPointDistance: 0.6
   m_Mass: 1
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -185,7 +185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1729560979747950591}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 6314294118462505587}
   - component: {fileID: 7028740308951313037}
   - component: {fileID: 7312506108276323081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 8888602330011630153}
   - component: {fileID: 4553841844197970779}
   - component: {fileID: 3300002773423151}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8562495531081607791}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5763837096060691816}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5227258134306096899}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 543913935424788448}
   - component: {fileID: 3686920466046813688}
   - component: {fileID: 5785189777082076301}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 3325075451952709231}
   - component: {fileID: 7430925899267977055}
   - component: {fileID: 1470810792993352251}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -649,7 +649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5490791548965400663}
   - component: {fileID: 6080686648505276298}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: small left collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,7 +687,7 @@ WheelCollider:
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0
-  m_ForceAppPointDistance: 1
+  m_ForceAppPointDistance: 0.1
   m_Mass: 0.1
   m_WheelDampingRate: 1
   m_ForwardFriction:
@@ -787,11 +787,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axleInfo:
-    leftWheel: {fileID: 4777944026749519144}
-    rightWheel: {fileID: 5262457099077374660}
-    leftSupport: {fileID: 6080686648505276298}
-    rightSupport: {fileID: 3285979966676055236}
+    wheels:
+    - {fileID: 4777944026749519144}
+    - {fileID: 5262457099077374660}
+    - {fileID: 6080686648505276298}
+    - {fileID: 3285979966676055236}
   maxTorque: 50
+  maxBrakeTorque: 50
 --- !u!1 &7707284284888506867
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,7 +805,6 @@ GameObject:
   - component: {fileID: 2106742808548853854}
   - component: {fileID: 7253344574491647594}
   - component: {fileID: 1507302088637338296}
-  - component: {fileID: 6203885673912848897}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -876,27 +877,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6203885673912848897
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7707284284888506867}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7795096851613709904
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,7 +887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7778204712848364042}
   - component: {fileID: 4777944026749519144}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: left collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,7 +925,7 @@ WheelCollider:
     damper: 0
     targetPosition: 0
   m_SuspensionDistance: 0
-  m_ForceAppPointDistance: 1
+  m_ForceAppPointDistance: 0.6
   m_Mass: 1
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -977,6 +957,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 576517169118461143}
     m_Modifications:
+    - target: {fileID: 100470, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 107946, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -988,6 +972,34 @@ PrefabInstance:
     - target: {fileID: 121078, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 129006, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 144230, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 160596, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 165334, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 167242, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 171246, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 177230, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 191996, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_IsActive
@@ -1044,6 +1056,14 @@ PrefabInstance:
     - target: {fileID: 5475726, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_Mass
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013428287994, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000014277073068, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114000010591715100, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: clearanceCheckMask.m_Bits
