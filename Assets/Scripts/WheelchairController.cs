@@ -58,19 +58,32 @@ public class WheelchairController : MonoBehaviour
             float torque = 0;
             float brakeTorque = 0;
             SteamVR_Input_Sources inputHand = inputHands[i];
-            if (grip.GetStateUp(inputHand)){GetVelocity(inputHand, i); }
-            if (grip.GetStateDown(inputHand)) {
-                if (pose.GetVelocity(inputHand).z > -0.1 && pose.GetVelocity(inputHand).z < 0.1)
+            float velocity = pose.GetVelocity(inputHand).z;
+            //if (grip.GetStateUp(inputHand)){GetVelocity(inputHand, i); }
+            //if (grip.GetStateDown(inputHand)) {
+            //    if (pose.GetVelocity(inputHand).z > -0.1 && pose.GetVelocity(inputHand).z < 0.1)
+            //    {
+            //        axleInfo.wheels[i].wheelDampingRate = 20;
+            //    }
+            //}
+
+            if (grip.GetState(inputHand))
+            {
+                if (Math.Abs(velocity) > 0.1f)
                 {
-                    axleInfo.wheels[i].wheelDampingRate = 20;
+                    torque = maxTorque * velocity / 1.0f;
+                } else
+                {
+                    brakeTorque = maxBrakeTorque;
                 }
             }
 
+            axleInfo.wheels[i].motorTorque = torque;
+            axleInfo.wheels[i].brakeTorque = brakeTorque;
         }
     }
     void GetVelocity(SteamVR_Input_Sources inputHand, int i)
     {
-        Debug.Log("here");
         float highestVelocity = 0f;
         SteamVR_Action_Boolean grip = SteamVR_Input.GetBooleanAction("GrabGrip");
         SteamVR_Action_Pose pose = SteamVR_Input.GetPoseAction("Pose");

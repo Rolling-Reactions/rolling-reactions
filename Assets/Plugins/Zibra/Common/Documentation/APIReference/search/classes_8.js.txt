@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['renderpipelinedetector_0',['RenderPipelineDetector',['../classcom_1_1zibra_1_1common_1_1_utilities_1_1_render_pipeline_detector.html',1,'com::zibra::common::Utilities']]]
-];
