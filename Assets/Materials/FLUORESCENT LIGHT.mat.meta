@@ -1,13 +1,8 @@
 fileFormatVersion: 2
-guid: 46be5f15e363aac4381cc9eb6efc673f
-labels:
-- Architecture
-- Concrete
-- Pattern
-- Tile
+guid: 9a6a764464ab2d749afeb71967df0812
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 0
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

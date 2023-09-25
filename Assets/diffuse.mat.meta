@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-guid: ebf8b4d16b7f8924fb9116d2e3207836
-labels:
-- Concrete
-- Industrial
-- Pattern
+guid: da260bdafb597594d9a25ce6d282a6bc
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 0
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
