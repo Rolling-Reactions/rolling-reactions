@@ -7697,6 +7697,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3285979966676055236, guid: 688cac9ecd9343848974fad14e3445d6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3767632297583844678, guid: 688cac9ecd9343848974fad14e3445d6, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080686648505276298, guid: 688cac9ecd9343848974fad14e3445d6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7692881064969593283, guid: 688cac9ecd9343848974fad14e3445d6, type: 3}
       propertyPath: m_Name
       value: wheelchair_root
