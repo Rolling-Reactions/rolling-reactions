@@ -8,6 +8,8 @@ using Valve.VR.InteractionSystem;
 
 public class WheelchairController : MonoBehaviour
 {
+    public Player player;
+
     public AxleInfo axleInfo; // the information about each individual axle
     public float maxTorque; // maximum torque the motor can apply to wheel
     public float maxBrakeTorque;
@@ -43,6 +45,8 @@ public class WheelchairController : MonoBehaviour
 
         visualWheel.transform.position = position;
         visualWheel.transform.rotation = rotation;
+
+
     }
 
     void Update()
@@ -63,7 +67,7 @@ public class WheelchairController : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             // Check whether hands are close enough to wheels, both should be in the same local space as they are parented by wheelchair_root
-            Vector3 handPos = pose.GetLocalPosition(inputHands[i]);
+            Vector3 handPos = player.transform.localPosition + pose.GetLocalPosition(inputHands[i]);
             Vector3 wheelPos = axleInfo.wheels[i].transform.localPosition;
             float wheelRadius = axleInfo.wheels[i].radius;
 
@@ -72,9 +76,11 @@ public class WheelchairController : MonoBehaviour
             // Find lateral distance
             float wheelLateralDist = Mathf.Abs(handPos.x - wheelPos.x);
 
+            Debug.Log(inputHands[i] + " " + Mathf.Abs(wheelTangentDist - wheelRadius) + " " + wheelLateralDist);
+
             if (Mathf.Abs(wheelTangentDist - wheelRadius) < wheelGripRadius && wheelLateralDist < wheelGripWidth)
             {
-                haptics.Execute(0, 2 * Time.fixedDeltaTime, hapticFrequency, hapticStrength, inputHands[i]);
+                haptics.Execute(0, Time.fixedDeltaTime, hapticFrequency, hapticStrength, inputHands[i]);
 
                 float torque = 0;
                 float brakeTorque = 0;
