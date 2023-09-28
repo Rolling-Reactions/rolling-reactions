@@ -12,6 +12,12 @@ public class WheelchairController : MonoBehaviour
     public float maxTorque; // maximum torque the motor can apply to wheel
     public float maxBrakeTorque;
 
+    public float wheelGripRadius = 0.15f; // the area in which you can grab the wheels
+    public float wheelGripWidth = 0.2f; // the area in which you can grab the wheels
+    public float hapticFrequency = 100.0f;
+    public float hapticStrength = 0.1f;
+    public SteamVR_Action_Vibration haptics;
+
     private Rigidbody rb;
 
     private void Start()
@@ -49,75 +55,48 @@ public class WheelchairController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Get input and move wheels
         SteamVR_Action_Pose pose = SteamVR_Input.GetPoseAction("Pose");
         SteamVR_Action_Boolean grip = SteamVR_Input.GetBooleanAction("GrabGrip");
 
         SteamVR_Input_Sources[] inputHands = { SteamVR_Input_Sources.LeftHand, SteamVR_Input_Sources.RightHand };
         for (int i = 0; i < 2; i++)
         {
-            float torque = 0;
-            float brakeTorque = 0;
-            SteamVR_Input_Sources inputHand = inputHands[i];
-            float velocity = pose.GetVelocity(inputHand).z;
-            //if (grip.GetStateUp(inputHand)){GetVelocity(inputHand, i); }
-            //if (grip.GetStateDown(inputHand)) {
-            //    if (pose.GetVelocity(inputHand).z > -0.1 && pose.GetVelocity(inputHand).z < 0.1)
-            //    {
-            //        axleInfo.wheels[i].wheelDampingRate = 20;
-            //    }
-            //}
+            // Check whether hands are close enough to wheels, both should be in the same local space as they are parented by wheelchair_root
+            Vector3 handPos = pose.GetLocalPosition(inputHands[i]);
+            Vector3 wheelPos = axleInfo.wheels[i].transform.localPosition;
+            float wheelRadius = axleInfo.wheels[i].radius;
 
-            if (grip.GetState(inputHand))
+            // Find distance in tangent plane
+            float wheelTangentDist = Vector2.Distance(new Vector2(handPos.y, handPos.z), new Vector2(wheelPos.y, wheelPos.z));
+            // Find lateral distance
+            float wheelLateralDist = Mathf.Abs(handPos.x - wheelPos.x);
+
+            if (Mathf.Abs(wheelTangentDist - wheelRadius) < wheelGripRadius && wheelLateralDist < wheelGripWidth)
             {
-                if (Math.Abs(velocity) > 0.1f)
+                haptics.Execute(0, 2 * Time.fixedDeltaTime, hapticFrequency, hapticStrength, inputHands[i]);
+
+                float torque = 0;
+                float brakeTorque = 0;
+                SteamVR_Input_Sources inputHand = inputHands[i];
+                float velocity = pose.GetVelocity(inputHand).z;
+
+                if (grip.GetState(inputHand))
                 {
-                    torque = maxTorque * velocity / 1.0f;
-                } else
-                {
-                    brakeTorque = maxBrakeTorque;
+                    if (Math.Abs(velocity) > 0.1f)
+                    {
+                        torque = maxTorque * velocity / 1.0f;
+                    }
+                    else
+                    {
+                        brakeTorque = maxBrakeTorque;
+                    }
                 }
+
+                axleInfo.wheels[i].motorTorque = torque;
+                axleInfo.wheels[i].brakeTorque = brakeTorque;
             }
-
-            axleInfo.wheels[i].motorTorque = torque;
-            axleInfo.wheels[i].brakeTorque = brakeTorque;
         }
-    }
-    void GetVelocity(SteamVR_Input_Sources inputHand, int i)
-    {
-        float highestVelocity = 0f;
-        SteamVR_Action_Boolean grip = SteamVR_Input.GetBooleanAction("GrabGrip");
-        SteamVR_Action_Pose pose = SteamVR_Input.GetPoseAction("Pose");
-
-
-        //float velocity = pose.GetVelocity(inputHand).z;
-        //if (Math.Abs(velocity) > 0.1f)
-        //{
-        //    Debug.Log(axleInfo.wheels[1].rpm);
-        //    torque = maxTorque;
-
-        //}
-        //else
-        //{
-
-        //    axleInfo.wheels[i].brakeTorque = brakeTorque;
-        //}
-
-        //axleInfo.wheels[i].motorTorque = torque;
-        if(pose.GetVelocity(inputHand).z < -0.1)
-        {
-            highestVelocity = -0.2f;
-            axleInfo.wheels[i].wheelDampingRate = 0.25f;
-        }
-        else if(pose.GetVelocity(inputHand).z > 0.1)
-        {
-            highestVelocity = 0.2f;
-            axleInfo.wheels[i].wheelDampingRate = 0.25f;
-        }
- 
-        
-
-        axleInfo.wheels[i].motorTorque = maxTorque * highestVelocity; 
-
     }
 }
 

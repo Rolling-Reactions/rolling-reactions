@@ -99,7 +99,7 @@ Transform:
   m_GameObject: {fileID: 1290348702666901256}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.864, y: 0.357, z: -2.36}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -156,6 +156,13 @@ MonoBehaviour:
     - {fileID: 4755395158927060206}
   maxTorque: 50
   maxBrakeTorque: 50
+  wheelGripRadius: 0.2
+  wheelGripWidth: 0.2
+  hapticFrequency: 100
+  hapticStrength: 0.1
+  haptics:
+    actionPath: 
+    needsReinit: 0
 --- !u!1 &3712874715855011516
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +292,7 @@ Transform:
   m_GameObject: {fileID: 5958883376219340007}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.17000008}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -726,7 +733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1e534b1bb416c047a42106aeeeb45a9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.22000003
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1e534b1bb416c047a42106aeeeb45a9, type: 3}
       propertyPath: m_LocalRotation.w
