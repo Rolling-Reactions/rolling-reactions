@@ -206,32 +206,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40311544}
   m_Mesh: {fileID: 4300002, guid: 96c37495b1e4bc24db136dfffb14b0ef, type: 3}
---- !u!1 &61122316 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 406589425610434131, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-  m_PrefabInstance: {fileID: 69542500}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &61122319
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61122316}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.05
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &67877583
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,46 +279,6 @@ PrefabInstance:
     - target: {fileID: 1290348702666901256, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
       propertyPath: m_Name
       value: wheelchair_root
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710036223874269472, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_ForwardFriction.m_Stiffness
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710036223874269472, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_SidewaysFriction.m_Stiffness
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710036223874269472, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_ForwardFriction.m_ExtremumSlip
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710036223874269472, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_ForwardFriction.m_AsymptoteSlip
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710036223874269472, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_ForwardFriction.m_ExtremumValue
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710036223874269472, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_SidewaysFriction.m_ExtremumSlip
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710036223874269472, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_ForwardFriction.m_AsymptoteValue
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710036223874269472, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_SidewaysFriction.m_AsymptoteSlip
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710036223874269472, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_SidewaysFriction.m_ExtremumValue
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710036223874269472, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_SidewaysFriction.m_AsymptoteValue
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3140903124009173983, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
       propertyPath: m_SidewaysFriction.m_Stiffness
@@ -428,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6275233282158446213, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6275233282158446213, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -458,56 +392,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8463113926372238660, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_ForwardFriction.m_Stiffness
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8463113926372238660, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_SidewaysFriction.m_Stiffness
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8463113926372238660, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_ForwardFriction.m_ExtremumSlip
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8463113926372238660, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_ForwardFriction.m_AsymptoteSlip
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8463113926372238660, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_ForwardFriction.m_ExtremumValue
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8463113926372238660, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_SidewaysFriction.m_ExtremumSlip
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8463113926372238660, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_ForwardFriction.m_AsymptoteValue
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8463113926372238660, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_SidewaysFriction.m_AsymptoteSlip
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8463113926372238660, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_SidewaysFriction.m_ExtremumValue
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8463113926372238660, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      propertyPath: m_SidewaysFriction.m_AsymptoteValue
-      value: 1.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 406589425610434131, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 61122319}
-    - targetCorrespondingSourceObject: {fileID: 3712874715855011516, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1164344029}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
 --- !u!1 &74955767
 GameObject:
@@ -5089,32 +4977,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125016718}
   m_Mesh: {fileID: 4300006, guid: 0e0146a28c9ff004db1a9e81b928b4a9, type: 3}
---- !u!1 &1164344026 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3712874715855011516, guid: 17e1f52aa9378c5478b7fe8c6d68abe7, type: 3}
-  m_PrefabInstance: {fileID: 69542500}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &1164344029
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1164344026}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.05
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1193784202
 GameObject:
   m_ObjectHideFlags: 0
