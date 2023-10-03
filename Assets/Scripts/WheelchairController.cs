@@ -45,8 +45,6 @@ public class WheelchairController : MonoBehaviour
 
         visualWheel.transform.position = position;
         visualWheel.transform.rotation = rotation;
-
-
     }
 
     void Update()
@@ -76,8 +74,6 @@ public class WheelchairController : MonoBehaviour
             // Find lateral distance
             float wheelLateralDist = Mathf.Abs(handPos.x - wheelPos.x);
 
-            Debug.Log(inputHands[i] + " " + Mathf.Abs(wheelTangentDist - wheelRadius) + " " + wheelLateralDist);
-
             if (Mathf.Abs(wheelTangentDist - wheelRadius) < wheelGripRadius && wheelLateralDist < wheelGripWidth)
             {
                 haptics.Execute(0, Time.fixedDeltaTime, hapticFrequency, hapticStrength, inputHands[i]);
@@ -89,13 +85,13 @@ public class WheelchairController : MonoBehaviour
 
                 if (grip.GetState(inputHand))
                 {
-                    if (Math.Abs(velocity) > 0.05f)
+                    if (Math.Abs(velocity) > 0.1f)
                     {
                         torque = maxTorque * velocity;
                     }
                     else
                     {
-                        //brakeTorque = maxBrakeTorque;
+                        brakeTorque = maxBrakeTorque;
                     }
                 }
 

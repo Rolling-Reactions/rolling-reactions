@@ -1,0 +1,77 @@
+﻿#include "pch-c.h"
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_m2C883227BDB9DF92892E51421CB30E2C2AEC4BE6 (void);
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_m24A0440E378C062BC5E914309F2D01FB3D3B4E42 (void);
+extern void SmokeAndFireBridge_ZibraSmokeAndFire_GetRenderEventWithDataFunc_m83201A18CB494800511D4B5EA1922ED01C0CB5FC (void);
+extern void SmokeAndFireBridge_ZibraSmokeAndFire_GPUReadbackGetData_mA9BF89D7D3E203B53160673D03DCD1A7F1CA4FB9 (void);
+extern void SmokeAndFireBridge_ZibraSmokeAndFire_GarbageCollect_mB78914D466724398D56CA6338A5A05BFE70D1255 (void);
+extern void SmokeAndFireBridge_ZibraSmokeAndFire_IsHardwareSupported_m74F2F6EBB38B302EEFC35CEE77842BE3B8DC34DA (void);
+extern void SmokeAndFireBridge_ZibraSmokeAndFire_GetSimulationPosition_m23EEA4EFBF20B80FC7BF96C6B09C1788B13D079F (void);
+extern void SmokeAndFireBridge_GetSimulationContainerPosition_m42B6C0800D43407734E1F54AB8A1D655457D34CB (void);
+extern void SmokeAndFireBridge_ToBridgeTextureFormat_m85814ED7F4DB193A2A618ED89A566C35B28A91F8 (void);
+extern void SmokeAndFireBridge_EventAndInstanceID_m1213F5983CA0373CEF19C51D372F9F01D1A5BCD8 (void);
+extern void SmokeAndFireBridge_SubmitInstanceEvent_mCA8BE475DAB63075BB7DD4B906A4C69D2AF67218 (void);
+extern void SmokeAndFireBridge_NeedGarbageCollect_m0D5EBDCBE76FF4BCE7F3C2477C25AB3010EC13BE (void);
+static Il2CppMethodPointer s_methodPointers[12] = 
+{
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_m2C883227BDB9DF92892E51421CB30E2C2AEC4BE6,
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_m24A0440E378C062BC5E914309F2D01FB3D3B4E42,
+	SmokeAndFireBridge_ZibraSmokeAndFire_GetRenderEventWithDataFunc_m83201A18CB494800511D4B5EA1922ED01C0CB5FC,
+	SmokeAndFireBridge_ZibraSmokeAndFire_GPUReadbackGetData_mA9BF89D7D3E203B53160673D03DCD1A7F1CA4FB9,
+	SmokeAndFireBridge_ZibraSmokeAndFire_GarbageCollect_mB78914D466724398D56CA6338A5A05BFE70D1255,
+	SmokeAndFireBridge_ZibraSmokeAndFire_IsHardwareSupported_m74F2F6EBB38B302EEFC35CEE77842BE3B8DC34DA,
+	SmokeAndFireBridge_ZibraSmokeAndFire_GetSimulationPosition_m23EEA4EFBF20B80FC7BF96C6B09C1788B13D079F,
+	SmokeAndFireBridge_GetSimulationContainerPosition_m42B6C0800D43407734E1F54AB8A1D655457D34CB,
+	SmokeAndFireBridge_ToBridgeTextureFormat_m85814ED7F4DB193A2A618ED89A566C35B28A91F8,
+	SmokeAndFireBridge_EventAndInstanceID_m1213F5983CA0373CEF19C51D372F9F01D1A5BCD8,
+	SmokeAndFireBridge_SubmitInstanceEvent_mCA8BE475DAB63075BB7DD4B906A4C69D2AF67218,
+	SmokeAndFireBridge_NeedGarbageCollect_m0D5EBDCBE76FF4BCE7F3C2477C25AB3010EC13BE,
+};
+static const int32_t s_InvokerIndices[12] = 
+{
+	15807,
+	9203,
+	15693,
+	12745,
+	15691,
+	15662,
+	14402,
+	14801,
+	14351,
+	12682,
+	11023,
+	15662,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_ZibraAI_ZibraEffects_SmokeAndFire_Bridge_CodeGenModule;
+const Il2CppCodeGenModule g_ZibraAI_ZibraEffects_SmokeAndFire_Bridge_CodeGenModule = 
+{
+	"ZibraAI.ZibraEffects.SmokeAndFire.Bridge.dll",
+	12,
+	s_methodPointers,
+	0,
+	NULL,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};

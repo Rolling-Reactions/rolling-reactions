@@ -1,0 +1,104 @@
+﻿#include "pch-c.h"
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+extern void XRSettings_get_enabled_mC22ABF5BF7D835DAB861A1FA384DBB8904D15E70 (void);
+extern void XRSettings_set_enabled_m15084475004A151A847825D5B73881FCEB19FD45 (void);
+extern void XRSettings_get_isDeviceActive_m0C8A5F7EC76EF392020137915E4DD8E75EBDD6B8 (void);
+extern void XRSettings_get_eyeTextureResolutionScale_m335B9DB51528FCA7534FCD6828796395D63ADA90 (void);
+extern void XRSettings_set_eyeTextureResolutionScale_m92F1029D68F387D9B0C2DB35DFAB2FD82C64A30B (void);
+extern void XRSettings_get_eyeTextureWidth_m3B18AF3F3382398E2A818B2B01AA1FE90FEB3AAF (void);
+extern void XRSettings_get_eyeTextureHeight_mCF4B2EC6851A8B8A8C4E6FC085A621B3166DB67A (void);
+extern void XRSettings_get_eyeTextureDesc_mFBE8F6D5D5A23E4DE1BCCD994ADFAB4FB11D7A19 (void);
+extern void XRSettings_get_renderViewportScale_mB35A32F5FE6B2EEE0CEF95ADFC04F171B6E5F5D1 (void);
+extern void XRSettings_get_renderViewportScaleInternal_mC9FFB83588F0865E76B78FB334AE6AAF0FF2EC24 (void);
+extern void XRSettings_get_loadedDeviceName_mAEB3908916B98A9E8CF2FD8754B5AAB096245243 (void);
+extern void XRSettings_LoadDeviceByName_mE151AD9057808A4079A5DCF6981B80E0C18BDD1E (void);
+extern void XRSettings_LoadDeviceByName_m034F3EF9E0C63932105CE7E4E94AE23EC062D005 (void);
+extern void XRSettings_get_supportedDevices_m9ABC69D1044484DF7ED2B236AFCCD8BF107BB74C (void);
+extern void XRSettings_get_stereoRenderingMode_mD66918C11E2216B1F8FA76934F79D5F85BC303FC (void);
+extern void XRSettings_get_eyeTextureDesc_Injected_m2B01F9A50CE1E88530044A5D342C1AE151BA17B5 (void);
+extern void XRDevice_GetNativePtr_m80448E2F76201232D28FB8617A76EAF73979B0BB (void);
+extern void XRDevice_DisableAutoXRCameraTracking_m1243FCAD2AC9C4D5C2E551255A1B2BA266E12A52 (void);
+extern void XRDevice_add_deviceLoaded_mD6171CDAA8333DB511A5B368DD89934124141EFB (void);
+extern void XRDevice_remove_deviceLoaded_m1A1FB3A62F6AD9036E602673C8A55F03F4B502AF (void);
+extern void XRDevice_InvokeDeviceLoaded_mBE2198DE44A72E2F5059566C46B9907D82782790 (void);
+static Il2CppMethodPointer s_methodPointers[21] = 
+{
+	XRSettings_get_enabled_mC22ABF5BF7D835DAB861A1FA384DBB8904D15E70,
+	XRSettings_set_enabled_m15084475004A151A847825D5B73881FCEB19FD45,
+	XRSettings_get_isDeviceActive_m0C8A5F7EC76EF392020137915E4DD8E75EBDD6B8,
+	XRSettings_get_eyeTextureResolutionScale_m335B9DB51528FCA7534FCD6828796395D63ADA90,
+	XRSettings_set_eyeTextureResolutionScale_m92F1029D68F387D9B0C2DB35DFAB2FD82C64A30B,
+	XRSettings_get_eyeTextureWidth_m3B18AF3F3382398E2A818B2B01AA1FE90FEB3AAF,
+	XRSettings_get_eyeTextureHeight_mCF4B2EC6851A8B8A8C4E6FC085A621B3166DB67A,
+	XRSettings_get_eyeTextureDesc_mFBE8F6D5D5A23E4DE1BCCD994ADFAB4FB11D7A19,
+	XRSettings_get_renderViewportScale_mB35A32F5FE6B2EEE0CEF95ADFC04F171B6E5F5D1,
+	XRSettings_get_renderViewportScaleInternal_mC9FFB83588F0865E76B78FB334AE6AAF0FF2EC24,
+	XRSettings_get_loadedDeviceName_mAEB3908916B98A9E8CF2FD8754B5AAB096245243,
+	XRSettings_LoadDeviceByName_mE151AD9057808A4079A5DCF6981B80E0C18BDD1E,
+	XRSettings_LoadDeviceByName_m034F3EF9E0C63932105CE7E4E94AE23EC062D005,
+	XRSettings_get_supportedDevices_m9ABC69D1044484DF7ED2B236AFCCD8BF107BB74C,
+	XRSettings_get_stereoRenderingMode_mD66918C11E2216B1F8FA76934F79D5F85BC303FC,
+	XRSettings_get_eyeTextureDesc_Injected_m2B01F9A50CE1E88530044A5D342C1AE151BA17B5,
+	XRDevice_GetNativePtr_m80448E2F76201232D28FB8617A76EAF73979B0BB,
+	XRDevice_DisableAutoXRCameraTracking_m1243FCAD2AC9C4D5C2E551255A1B2BA266E12A52,
+	XRDevice_add_deviceLoaded_mD6171CDAA8333DB511A5B368DD89934124141EFB,
+	XRDevice_remove_deviceLoaded_m1A1FB3A62F6AD9036E602673C8A55F03F4B502AF,
+	XRDevice_InvokeDeviceLoaded_mBE2198DE44A72E2F5059566C46B9907D82782790,
+};
+static const int32_t s_InvokerIndices[21] = 
+{
+	15662,
+	14824,
+	15662,
+	15736,
+	14842,
+	15691,
+	15691,
+	15727,
+	15736,
+	15736,
+	15699,
+	14835,
+	14835,
+	15699,
+	15691,
+	14823,
+	15693,
+	13298,
+	14835,
+	14835,
+	14835,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_UnityEngine_VRModule_CodeGenModule;
+const Il2CppCodeGenModule g_UnityEngine_VRModule_CodeGenModule = 
+{
+	"UnityEngine.VRModule.dll",
+	21,
+	s_methodPointers,
+	0,
+	NULL,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
