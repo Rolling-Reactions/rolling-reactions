@@ -1,0 +1,99 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System;
+
+using Valve.VR;
+using Valve.VR.InteractionSystem;
+
+public class WheelchairAxleController : MonoBehaviour
+{
+    public Player player;
+
+    public GameObject left;
+    public GameObject right;
+    private Wheel leftWheel;
+    private Wheel rightWheel;
+
+    public float wheelGripRadius = 0.15f; // the area in which you can grab the wheels
+    public float wheelGripWidth = 0.2f; // the area in which you can grab the wheels
+    public float hapticFrequency = 100.0f;
+    public float hapticStrength = 0.1f;
+    public SteamVR_Action_Vibration haptics;
+
+    private Rigidbody rb;
+
+    private void Start()
+    {
+        rb = this.GetComponent<Rigidbody>();
+        leftWheel = new Wheel(left, left.GetComponent<SphereCollider>(), left.GetComponent<HingeJoint>());
+        rightWheel = new Wheel(right, right.GetComponent<SphereCollider>(), right.GetComponent<HingeJoint>());
+
+
+    }
+
+    void FixedUpdate()
+    {
+        // Get input and move wheels
+        SteamVR_Action_Pose pose = SteamVR_Input.GetPoseAction("Pose");
+        SteamVR_Action_Boolean grip = SteamVR_Input.GetBooleanAction("GrabGrip");
+
+        Wheel[] wheels = { leftWheel, rightWheel };
+
+        SteamVR_Input_Sources[] inputHands = { SteamVR_Input_Sources.LeftHand, SteamVR_Input_Sources.RightHand };
+        for (int i = 0; i < 2; i++)
+        {
+            // Check whether hands are close enough to wheels, both should be in the same local space as they are parented by wheelchair_root
+            Vector3 handPos = player.transform.localPosition + pose.GetLocalPosition(inputHands[i]);
+            Vector3 wheelPos = wheels[i].collider.transform.localPosition;
+            float wheelRadius = wheels[i].collider.radius;
+
+            // Find distance in tangent plane
+            float wheelTangentDist = Vector2.Distance(new Vector2(handPos.y, handPos.z), new Vector2(wheelPos.y, wheelPos.z));
+            // Find lateral distance
+            float wheelLateralDist = Mathf.Abs(handPos.x - wheelPos.x);
+
+            if (Mathf.Abs(wheelTangentDist - wheelRadius) < wheelGripRadius && wheelLateralDist < wheelGripWidth)
+            {
+                haptics.Execute(0, Time.fixedDeltaTime, hapticFrequency, hapticStrength, inputHands[i]);
+
+                SteamVR_Input_Sources inputHand = inputHands[i];
+                float angularvel = pose.GetVelocity(inputHand).z / (2 * Mathf.PI * wheels[i].collider.radius) * 180;
+                Debug.Log(angularvel);
+                if (grip.GetState(inputHand))
+                {
+                    wheels[i].joint.useMotor = true;
+                    JointMotor motor = wheels[i].joint.motor;
+                    if (Mathf.Abs(angularvel) > 60)
+                        motor.targetVelocity = angularvel;
+                    else
+                        motor.targetVelocity = angularvel;
+
+                    wheels[i].joint.motor = motor;
+                }
+                else
+                {
+                    wheels[i].joint.useMotor = false;
+                }
+            }
+            else
+            {
+                wheels[i].joint.useMotor = false;
+            }
+        }
+    }
+
+    struct Wheel
+    {
+        public GameObject wheel;
+        public SphereCollider collider;
+        public HingeJoint joint;
+
+        public Wheel(GameObject wheel, SphereCollider collider, HingeJoint joint)
+        {
+            this.wheel = wheel;
+            this.collider = collider;
+            this.joint = joint;
+        }
+    }
+}
