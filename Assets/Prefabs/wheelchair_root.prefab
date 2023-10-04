@@ -1168,7 +1168,7 @@ HingeJoint:
   m_UseMotor: 1
   m_Motor:
     targetVelocity: 0
-    force: 10000
+    force: 100
     freeSpin: 0
   m_UseLimits: 0
   m_ExtendedLimits: 0
@@ -3893,7 +3893,7 @@ Transform:
   m_GameObject: {fileID: 4871221427242399705}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.35, z: 0}
+  m_LocalPosition: {x: -0, y: 0.35, z: -9.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3913,7 +3913,7 @@ Rigidbody:
   m_Mass: 80
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: -0.2, z: -0.05}
+  m_CenterOfMass: {x: 0, y: -0.2, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -3922,7 +3922,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
+  m_ImplicitCom: 0
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -3946,8 +3946,8 @@ MonoBehaviour:
   right: {fileID: 1596211696252177799}
   wheelGripRadius: 0.15
   wheelGripWidth: 0.2
-  hapticFrequency: 100
-  hapticStrength: 0.1
+  hapticFrequency: 200
+  hapticStrength: 0.05
   haptics:
     actionPath: /actions/default/out/Haptic
     needsReinit: 0
@@ -4371,7 +4371,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.25000006, y: 0, z: -0.11000003}
+  m_ConnectedAnchor: {x: -0.25, y: 0, z: -0.11000003}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -4381,7 +4381,7 @@ HingeJoint:
   m_UseMotor: 1
   m_Motor:
     targetVelocity: 0
-    force: 10000
+    force: 100
     freeSpin: 0
   m_UseLimits: 0
   m_ExtendedLimits: 0
@@ -7330,7 +7330,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.25000006, y: -0.25, z: 0.41400012}
+  m_ConnectedAnchor: {x: 0.24999997, y: -0.25, z: 0.41400012}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0

@@ -26,8 +26,8 @@ public class WheelchairAxleController : MonoBehaviour
     private void Start()
     {
         rb = this.GetComponent<Rigidbody>();
-        leftWheel = new Wheel(left, left.GetComponent<SphereCollider>(), left.GetComponent<HingeJoint>());
-        rightWheel = new Wheel(right, right.GetComponent<SphereCollider>(), right.GetComponent<HingeJoint>());
+        leftWheel = new Wheel(left, left.GetComponent<SphereCollider>(), left.GetComponent<Rigidbody>(), left.GetComponent<HingeJoint>());
+        rightWheel = new Wheel(right, right.GetComponent<SphereCollider>(), right.GetComponent<Rigidbody>(), right.GetComponent<HingeJoint>());
 
 
     }
@@ -53,22 +53,25 @@ public class WheelchairAxleController : MonoBehaviour
             // Find lateral distance
             float wheelLateralDist = Mathf.Abs(handPos.x - wheelPos.x);
 
+            SteamVR_Input_Sources inputHand = inputHands[i];
+            Vector3 wheelTangentDir = Vector3.Cross(Vector3.Normalize(handPos - wheelPos), -Vector3.right);
+            float wheelTangentVel = Vector3.Dot(pose.GetVelocity(inputHand), wheelTangentDir);
+            float angularvel = wheelTangentVel / (2 * Mathf.PI * wheels[i].collider.radius) * 360;
+
             if (Mathf.Abs(wheelTangentDist - wheelRadius) < wheelGripRadius && wheelLateralDist < wheelGripWidth)
             {
                 haptics.Execute(0, Time.fixedDeltaTime, hapticFrequency, hapticStrength, inputHands[i]);
 
-                SteamVR_Input_Sources inputHand = inputHands[i];
-                float angularvel = pose.GetVelocity(inputHand).z / (2 * Mathf.PI * wheels[i].collider.radius) * 180;
-                Debug.Log(angularvel);
                 if (grip.GetState(inputHand))
                 {
                     wheels[i].joint.useMotor = true;
                     JointMotor motor = wheels[i].joint.motor;
-                    if (Mathf.Abs(angularvel) > 60)
-                        motor.targetVelocity = angularvel;
+                    
+                    if (Mathf.Abs(angularvel) > 20)
+                        motor.targetVelocity = Mathf.Rad2Deg * (wheels[i].wheel.transform.worldToLocalMatrix * wheels[i].rb.angularVelocity).x + angularvel;
                     else
-                        motor.targetVelocity = angularvel;
-
+                        motor.targetVelocity = 0;
+                    
                     wheels[i].joint.motor = motor;
                 }
                 else
@@ -87,12 +90,14 @@ public class WheelchairAxleController : MonoBehaviour
     {
         public GameObject wheel;
         public SphereCollider collider;
+        public Rigidbody rb;
         public HingeJoint joint;
 
-        public Wheel(GameObject wheel, SphereCollider collider, HingeJoint joint)
+        public Wheel(GameObject wheel, SphereCollider collider, Rigidbody rb, HingeJoint joint)
         {
             this.wheel = wheel;
             this.collider = collider;
+            this.rb = rb;
             this.joint = joint;
         }
     }
