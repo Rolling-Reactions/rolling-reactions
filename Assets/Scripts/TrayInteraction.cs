@@ -5,8 +5,8 @@ using UnityEngine;
 public class TrayInteraction : MonoBehaviour
 {
     public Transform[] slotPositions; // Array of all the slot positions on the tray
-    //public Vector3[] slotPositions2; // Array of all the slot positions on the tray
     private GameObject[] placedObjects; // Array of placed objects
+    private GameObject heldObject; // Object that is currently held by user                             
 
 
     // Start is called before the first frame update
@@ -38,20 +38,27 @@ public class TrayInteraction : MonoBehaviour
         slotObject5.transform.position = new Vector3(-0.202f, 0.83f, -0.265f);
         slotPositions[5] = slotObject5.transform;
 
-
-
         placedObjects = new GameObject[slotPositions.Length];
     }
 
     // Function for placing game object on tray
-    public bool PlaceObject(GameObject objectToPlace) {
-        for (int i = 0; i < slotPositions.Length; i++) {
-            if (placedObjects[i] == null) { // If this slot is empty, put the object here
+    public bool PlaceObject(GameObject objectToPlace) 
+    {
+        for (int i = 0; i < slotPositions.Length; i++) 
+        {
+            if (placedObjects[i] == null) // If this slot is empty, put the object here
+            { 
                 objectToPlace.transform.position = slotPositions[i].position;
+
+                // we disable the object's rigidbody, so it wont be affected by any external forces
+                Rigidbody rb = objectToPlace.GetComponent<Rigidbody>();
+                if (rb != null) 
+                {
+                    rb.isKinematic = true; // This makes the object kinematic
+                }
                 placedObjects[i] = objectToPlace;
                 return true; // gameobject succcessfully placed
             }
-
         }
         return false; // no available slots on tray: could not place the object
     }
@@ -59,6 +66,44 @@ public class TrayInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If object is released within tray area, then 
+        if (heldObject != null) 
+        {
+            float distanceToTray = Vector3.Distance(heldObject.transform.position, transform.position);
+
+            float placeThreshold = 0.1f; // Here we adjust the distance if we want to
+
+            if (distanceToTray < placeThreshold) 
+            {
+                // then release the object onto  the tray
+                ReleaseObjectOnTray();
+            }
+        }
+    }
+
+    // function to pick up object with the controller, though we already have this?
+    void PickUpObject(GameObject objectToPickUp)
+    {
+        heldObject = objectToPickUp;
+        objectToPickUp.transform.SetParent(controllerTransform);
+    }
+
+    void ReleaseObjectOnTray() 
+    {
+        if (heldObject != null)
+        {
+            // try to place object on tray
+            bool placed = PlaceObject(heldObject);
+            if (placed)
+            {
+                // object successfully placed on the tray
+                heldObject = null; // clear the held object reference
+            }
+            else 
+            {
+                // What do we want to happen if there are no available slots on the tray?
+                // sound/message that it cannot be placed
+            }
+        }
     }
 }
+
