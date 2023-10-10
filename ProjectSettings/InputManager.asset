@@ -1128,9 +1128,9 @@ InputManager:
   - serializedVersion: 3
     m_Name: Right wheel
     descriptiveName: 
-    descriptiveNegativeName: e
+    descriptiveNegativeName: 
     negativeButton: d
-    positiveButton: 
+    positiveButton: e
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
