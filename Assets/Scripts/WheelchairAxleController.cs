@@ -17,6 +17,7 @@ public class WheelchairAxleController : MonoBehaviour
 
     public float wheelGripRadius = 0.15f; // the area in which you can grab the wheels
     public float wheelGripWidth = 0.2f; // the area in which you can grab the wheels
+    public float breakingThreshold = 20.0f; // angular velocity (deg/s) at which the wheels start breaking
     public float hapticFrequency = 100.0f;
     public float hapticStrength = 0.1f;
     public SteamVR_Action_Vibration haptics;
@@ -30,10 +31,10 @@ public class WheelchairAxleController : MonoBehaviour
         rightWheel = new Wheel(right, right.GetComponent<SphereCollider>(), right.GetComponent<Rigidbody>(), right.GetComponent<HingeJoint>());
         leftCasterWheel = new Wheel(leftCaster, leftCaster.GetComponent<SphereCollider>(), leftCaster.GetComponent<Rigidbody>(), leftCaster.GetComponent<HingeJoint>());
 
-        leftCasterWheel.rb.solverIterations = 50;
-        rightCasterWheel.rb.solverIterations = 50;
-        leftHinge.GetComponent<Rigidbody>().solverIterations = 50;
-        rightHinge.GetComponent<Rigidbody>().solverIterations = 50;
+        leftCasterWheel.rb.solverIterations = 1000;
+        rightCasterWheel.rb.solverIterations = 100;
+        leftHinge.GetComponent<Rigidbody>().solverIterations = 100;
+        rightHinge.GetComponent<Rigidbody>().solverIterations = 100;
     }
 
     void FixedUpdate()
@@ -91,7 +92,7 @@ public class WheelchairAxleController : MonoBehaviour
                         wheels[i].joint.useMotor = true;
                         JointMotor motor = wheels[i].joint.motor;
 
-                        if (Mathf.Abs(angularvel) > 20)
+                        if (Mathf.Abs(angularvel) > breakingThreshold)
                             motor.targetVelocity = Mathf.Rad2Deg * (wheels[i].wheel.transform.worldToLocalMatrix * wheels[i].rb.angularVelocity).x + angularvel;
                         else
                             motor.targetVelocity = 0;
