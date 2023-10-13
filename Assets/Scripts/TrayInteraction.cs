@@ -6,7 +6,11 @@ public class TrayInteraction : MonoBehaviour
 {
     public Transform[] slotPositions; // Array of all the slot positions on the tray
     private GameObject[] placedObjects; // Array of placed objects
-    private GameObject heldObject; // Object that is currently held by user                             
+    private GameObject heldObject; // Object that is currently held by user
+    public GameObject rightHand;
+    public GameObject leftHand;
+
+ //public class
 
 
     // Start is called before the first frame update
@@ -26,22 +30,22 @@ public class TrayInteraction : MonoBehaviour
         slotObject2.transform.position = new Vector3(0.127f, 0.83f, -0.265f);
         slotPositions[2] = slotObject2.transform;
 
-        GameObject slotObject3 = new GameObject("First slot");
+        GameObject slotObject3 = new GameObject("Fourth slot");
         slotObject3.transform.position = new Vector3(-0.202f, 0.83f, 0.19f);
         slotPositions[3] = slotObject3.transform;
 
-        GameObject slotObject4 = new GameObject("First slot");
+        GameObject slotObject4 = new GameObject("Fifth slot");
         slotObject4.transform.position = new Vector3(-0.202f, 0.83f, -0.036f);
         slotPositions[4] = slotObject4.transform;
 
-        GameObject slotObject5 = new GameObject("First slot");
+        GameObject slotObject5 = new GameObject("Sixth slot");
         slotObject5.transform.position = new Vector3(-0.202f, 0.83f, -0.265f);
         slotPositions[5] = slotObject5.transform;
 
         placedObjects = new GameObject[slotPositions.Length];
     }
 
-    // Function for placing game object on tray
+    // FUNCTION FOR PLACING GAME OBJECT ON TRAY
     public bool PlaceObject(GameObject objectToPlace) 
     {
         for (int i = 0; i < slotPositions.Length; i++) 
@@ -68,23 +72,24 @@ public class TrayInteraction : MonoBehaviour
     {
         if (heldObject != null) 
         {
+            // calculating the distance between the tray and the held object
             float distanceToTray = Vector3.Distance(heldObject.transform.position, transform.position);
-
             float placeThreshold = 0.1f; // Here we adjust the distance if we want to
-
             if (distanceToTray < placeThreshold) 
             {
-                // then release the object onto  the tray
-                ReleaseObjectOnTray();
+                ReleaseObjectOnTray(); // then release the object onto  the tray
             }
         }
     }
 
-    // function to pick up object with the controller, though we already have this?
+    // function to pick up object 
+    // should make the picked up object become the variable heldObject
     void PickUpObject(GameObject objectToPickUp)
     {
-        heldObject = objectToPickUp;
-        objectToPickUp.transform.SetParent(controllerTransform);
+        heldObject = objectToPickUp; // Vad innebär detta?
+        //objectToPickUp.transform.SetParent(controllerTransform); // Objektet ska vara där handen är, så att vi kan se när den är nära Tray
+                                                                 // Men objektet kommer redan följa med handen när det är upplockat? Behövs verkligen denna kodrad?
+        
     }
 
     void ReleaseObjectOnTray() 
@@ -101,9 +106,13 @@ public class TrayInteraction : MonoBehaviour
             else 
             {
                 // What do we want to happen if there are no available slots on the tray?
-                // sound/message that it cannot be placed
+                // sound/message that it cannot be placed?
             }
         }
     }
 }
 
+// LeftHand.ObjectAttachmentPoint
+
+// Hand position
+// Vector3 handPos = player.transform.localPosition + pose.GetLocalPosition(inputHands[i]);
