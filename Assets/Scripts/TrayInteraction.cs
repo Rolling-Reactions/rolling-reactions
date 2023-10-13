@@ -90,6 +90,10 @@ public class TrayInteraction : MonoBehaviour
         }
     }
 
+
+
+
+
     // function to pick up object 
     // should make the picked up object become the variable heldObject
     void PickUpObject(GameObject objectToPickUp)
@@ -97,8 +101,12 @@ public class TrayInteraction : MonoBehaviour
         heldObject = objectToPickUp; // Vad innebär detta?
         //objectToPickUp.transform.SetParent(controllerTransform); // Objektet ska vara där handen är, så att vi kan se när den är nära Tray
                                                                  // Men objektet kommer redan följa med handen när det är upplockat? Behövs verkligen denna kodrad?
-        
     }
+
+
+
+
+
 
     void ReleaseObjectOnTray() 
     {
@@ -117,7 +125,22 @@ public class TrayInteraction : MonoBehaviour
             }
         }
     }
+
+
+
+
+
+
+
+    // Need one function to pick up object from Tray? Then the object will not be kinematic anymore
+    void PickUpObjectFromTray() 
+    {
+        heldObject.GetComponent<Rigidbody>().isKinematic = false; // Object not kinematic after leaving tray
+        
+    }
 }
+
+
 
 // LeftHand.ObjectAttachmentPoint
 
