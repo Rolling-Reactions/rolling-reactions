@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2707662191943483086}
   - component: {fileID: 5892488979922986092}
   - component: {fileID: 5980663466991516835}
-  - component: {fileID: 2023931098003513526}
+  - component: {fileID: 2025914419037098421}
   m_Layer: 6
   m_Name: Right caster
   m_TagString: Untagged
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!59 &2023931098003513526
+--- !u!59 &2025914419037098421
 HingeJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,7 +127,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000000059604645, y: -0.049999997, z: -0.049999952}
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -1730,7 +1730,7 @@ GameObject:
   - component: {fileID: 6837213736732588655}
   - component: {fileID: 7949556591801479171}
   - component: {fileID: 4851906628232641496}
-  - component: {fileID: 5690435056226069628}
+  - component: {fileID: 7423660028870718109}
   m_Layer: 6
   m_Name: Left caster
   m_TagString: Untagged
@@ -1802,7 +1802,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!59 &5690435056226069628
+--- !u!59 &7423660028870718109
 HingeJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1814,7 +1814,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000059604645, y: -0.049999997, z: 0.0500001}
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -4192,7 +4192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4362389515267518483}
   - component: {fileID: 7532581994457395871}
-  - component: {fileID: 5428965654584575534}
+  - component: {fileID: 8868470675238291310}
   m_Layer: 6
   m_Name: Left caster turn axle
   m_TagString: Untagged
@@ -4243,7 +4243,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!59 &5428965654584575534
+--- !u!59 &8868470675238291310
 HingeJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4255,7 +4255,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.2500001, y: -0.2, z: 0.40000013}
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -5275,7 +5275,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.25000006, y: 0, z: -0.110000044}
+  m_ConnectedAnchor: {x: 0.25000006, y: 0, z: -0.109999985}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -5673,7 +5673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6048284206775689104}
   - component: {fileID: 8985677683976090088}
-  - component: {fileID: 9105581061458809151}
+  - component: {fileID: 7420976611076377200}
   m_Layer: 6
   m_Name: Right caster turn axle
   m_TagString: Untagged
@@ -5724,7 +5724,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!59 &9105581061458809151
+--- !u!59 &7420976611076377200
 HingeJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5736,7 +5736,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.24999997, y: -0.2, z: 0.40000018}
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -6185,7 +6185,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.25000006, y: 0, z: -0.11000003}
+  m_ConnectedAnchor: {x: -0.25, y: 0, z: -0.11000006}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -7212,7 +7212,7 @@ Transform:
   m_GameObject: {fileID: 8721066708163582836}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.4901288, y: 0.35, z: -13.183802}
+  m_LocalPosition: {x: 0, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7268,6 +7268,9 @@ MonoBehaviour:
   rightCaster: {fileID: 127302844468537186}
   leftHinge: {fileID: 5256450449073316470}
   rightHinge: {fileID: 6705733010806244580}
+  casterSolverIterations: 20
+  casterHingeSpringSpeedThreshold: 0.1
+  hingeSpringForceMultiplier: 50
   wheelGripRadius: 0.15
   wheelGripWidth: 0.2
   breakingThreshold: 10
