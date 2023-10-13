@@ -52,7 +52,7 @@ public class WheelchairAxleController : MonoBehaviour
         float wheelRadius = wheels[0].collider.radius;
         Vector2 wheelInput = Vector2.zero;
         bool[] gripping = new bool[2] { false, false };
-
+        bool braking = false;
         // Obtain wheel velocities from input
         if (keyboardControl)
         {
@@ -96,13 +96,16 @@ public class WheelchairAxleController : MonoBehaviour
                         if (Mathf.Abs(angularvel) > breakingThreshold)
                             wheelInput[i] = angularvel;
                         else
+                        {
                             wheelInput[i] = 0.0f;
+                        }
                     }
                 }
             }
         }
 
-
+        Vector2 angularVel = Mathf.Rad2Deg * new Vector2((wheels[0].wheel.transform.worldToLocalMatrix * wheels[0].rb.angularVelocity).x, (wheels[1].wheel.transform.worldToLocalMatrix * wheels[1].rb.angularVelocity).x);
+        Debug.Log("Velocity: " + angularVel);
         for (int i = 0; i < 2; i++)
         {
             if (gripping[i])
@@ -110,8 +113,7 @@ public class WheelchairAxleController : MonoBehaviour
                 wheels[i].joint.useMotor = true;
                 JointMotor motor = wheels[i].joint.motor;
 
-                float currAngularVel = Mathf.Rad2Deg * (wheels[i].wheel.transform.worldToLocalMatrix * wheels[i].rb.angularVelocity).x;
-                motor.targetVelocity = currAngularVel + wheelInput[i];
+                motor.targetVelocity = (wheelInput[i] == 0.0f) ? 0.0f : angularVel[i] + wheelInput[i];
                 wheels[i].joint.motor = motor;
             }
             else
@@ -121,7 +123,7 @@ public class WheelchairAxleController : MonoBehaviour
         }
 
         // Set caster wheel angle from estimated velocity in local zx-plane from wheel input
-        Vector2 estVelocity = (new Vector2(wheelInput.x + wheelInput.y, wheelInput.x - wheelInput.y) / 360) * 2 * Mathf.PI * wheelRadius;
+        Vector2 estVelocity = (new Vector2((angularVel.x + angularVel.y) / 2, (angularVel.x- angularVel.y) / 2) / 360) * 2 * Mathf.PI * wheelRadius;
         float estSpeed = estVelocity.magnitude;
         float casterWheelAngle = Mathf.Rad2Deg * Mathf.Atan2(estVelocity.y, estVelocity.x);        
 
