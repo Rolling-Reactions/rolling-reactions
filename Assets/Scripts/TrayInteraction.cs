@@ -45,7 +45,11 @@ public class TrayInteraction : MonoBehaviour
         placedObjects = new GameObject[slotPositions.Length];
     }
 
-    // FUNCTION FOR PLACING GAME OBJECT ON TRAY
+
+
+
+
+    // FUNCTION FOR PLACING GAME OBJECT ON TRAY, returns true if successful
     public bool PlaceObject(GameObject objectToPlace) 
     {
         for (int i = 0; i < slotPositions.Length; i++) 
@@ -66,6 +70,10 @@ public class TrayInteraction : MonoBehaviour
         }
         return false; // no available slots on tray: could not place the object
     }
+
+
+
+
 
     // Update is called once per frame
     void Update()
@@ -98,14 +106,13 @@ public class TrayInteraction : MonoBehaviour
         {
             // try to place object on tray
             bool placed = PlaceObject(heldObject);
-            if (placed)
+            if (placed) // if object successfully placed on the tray
             {
-                // object successfully placed on the tray
                 heldObject = null; // clear the held object reference
             }
             else 
             {
-                // What do we want to happen if there are no available slots on the tray?
+                // Cannot place object: No available slots on the tray
                 // sound/message that it cannot be placed?
             }
         }
