@@ -4209,7 +4209,7 @@ Transform:
   m_GameObject: {fileID: 5256450449073316470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25, y: -0.2, z: 0.35}
+  m_LocalPosition: {x: -0.25, y: -0.2, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4224,9 +4224,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5256450449073316470}
   serializedVersion: 4
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -4255,7 +4255,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.25000006, y: -0.19999999, z: 0.35000005}
+  m_ConnectedAnchor: {x: -0.2500001, y: -0.2, z: 0.40000013}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -5690,7 +5690,7 @@ Transform:
   m_GameObject: {fileID: 6705733010806244580}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: -0.2, z: 0.35}
+  m_LocalPosition: {x: 0.25, y: -0.2, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5705,9 +5705,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6705733010806244580}
   serializedVersion: 4
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5736,7 +5736,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.25000006, y: -0.2, z: 0.35000005}
+  m_ConnectedAnchor: {x: 0.24999997, y: -0.2, z: 0.40000018}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -7212,7 +7212,7 @@ Transform:
   m_GameObject: {fileID: 8721066708163582836}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.04728031, y: 0.35, z: -12.884757}
+  m_LocalPosition: {x: -1.4901288, y: 0.35, z: -13.183802}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7232,7 +7232,7 @@ Rigidbody:
   m_Mass: 80
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: -0.2, z: 0}
+  m_CenterOfMass: {x: 0, y: -0.2, z: 0.1}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -7241,7 +7241,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
+  m_ImplicitCom: 0
   m_ImplicitTensor: 0
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -7260,7 +7260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa84c053d801b8c4f9e6aa8ae1cb9a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyboardControl: 1
+  keyboardControl: 0
   player: {fileID: 3605362725063210943}
   left: {fileID: 7459562677922444819}
   right: {fileID: 6005579225903580423}
@@ -7270,6 +7270,7 @@ MonoBehaviour:
   rightHinge: {fileID: 6705733010806244580}
   wheelGripRadius: 0.15
   wheelGripWidth: 0.2
+  breakingThreshold: 10
   hapticFrequency: 200
   hapticStrength: 0.05
   haptics:
