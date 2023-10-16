@@ -910,7 +910,10 @@ PrefabInstance:
       value: modular_kitchen_table_4_INV
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -3388311286054223981, guid: 2a021a065386547809ab0a51e4b5761f, type: 3}
+    - {fileID: 1114406693992947808, guid: 2a021a065386547809ab0a51e4b5761f, type: 3}
+    - {fileID: 7563720987796936867, guid: 2a021a065386547809ab0a51e4b5761f, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8897845170802225566, guid: 2a021a065386547809ab0a51e4b5761f, type: 3}
       insertIndex: -1
