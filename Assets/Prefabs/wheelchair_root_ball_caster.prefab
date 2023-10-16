@@ -1061,7 +1061,7 @@ GameObject:
   m_Component:
   - component: {fileID: 194031607627593195}
   m_Layer: 6
-  m_Name: CasterWheel
+  m_Name: Left caster visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1075,14 +1075,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324564593521146730}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.25000012, y: -0.25, z: 0.3000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4916506545072438694}
   - {fileID: 8527124572887872683}
-  m_Father: {fileID: 5245498925991845836}
+  m_Father: {fileID: 3535509495786541922}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1596211696252177799
 GameObject:
@@ -2228,8 +2228,7 @@ Transform:
   m_LocalPosition: {x: -0.25000006, y: -0.25, z: 0.30000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 194031607627593195}
+  m_Children: []
   m_Father: {fileID: 3535509495786541922}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &7963381973577197116
@@ -2263,7 +2262,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 0.5
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -3615,7 +3614,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8009529100269248708}
   m_Layer: 6
-  m_Name: CasterWheel
+  m_Name: Right caster visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3629,14 +3628,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4471080153004409405}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.25000018, y: -0.25, z: 0.30000016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1713297766776290497}
   - {fileID: 2439872729164152628}
-  m_Father: {fileID: 196223324602822714}
+  m_Father: {fileID: 3535509495786541922}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4475827695897623518
 GameObject:
@@ -3894,7 +3893,7 @@ Transform:
   m_GameObject: {fileID: 4871221427242399705}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.35, z: 0}
+  m_LocalPosition: {x: -0.0673669, y: 0.35, z: -13.866611}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3950,6 +3949,11 @@ MonoBehaviour:
   rightCaster: {fileID: 8861118154937517201}
   leftHinge: {fileID: 0}
   rightHinge: {fileID: 0}
+  visualLeftCaster: {fileID: 194031607627593195}
+  visualRightCaster: {fileID: 8009529100269248708}
+  casterSolverIterations: 20
+  casterHingeSpringSpeedThreshold: 0.1
+  hingeSpringForceMultiplier: 1
   wheelGripRadius: 0.15
   wheelGripWidth: 0.2
   breakingThreshold: 20
@@ -5047,7 +5051,9 @@ Transform:
   - {fileID: 2667820978930023754}
   - {fileID: 5971947660210194731}
   - {fileID: 5245498925991845836}
+  - {fileID: 194031607627593195}
   - {fileID: 196223324602822714}
+  - {fileID: 8009529100269248708}
   m_Father: {fileID: 2092762817774158361}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6258498182918894511
@@ -7262,8 +7268,7 @@ Transform:
   m_LocalPosition: {x: 0.25000012, y: -0.25, z: 0.3000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8009529100269248708}
+  m_Children: []
   m_Father: {fileID: 3535509495786541922}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &5004391812324952997
@@ -7297,7 +7302,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 0.5
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

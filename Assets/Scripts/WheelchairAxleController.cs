@@ -12,12 +12,18 @@ public class WheelchairAxleController : MonoBehaviour
     public Player player;
 
     public GameObject left, right, leftCaster, rightCaster, leftHinge, rightHinge;
+    public Transform visualLeftCaster, visualRightCaster;
     public int casterSolverIterations = 20;
     public float casterHingeSpringSpeedThreshold = 0.1f;
     public float hingeSpringForceMultiplier = 1.0f;
 
     private HingeJoint leftCasterHinge, rightCasterHinge;
     private Wheel leftWheel, rightWheel, leftCasterWheel, rightCasterWheel;
+
+    private Wheel[] wheels;
+    private float wheelRadius;
+    HingeJoint[] hinges;
+
 
 
     public float wheelGripRadius = 0.15f; // the area in which you can grab the wheels
@@ -29,7 +35,7 @@ public class WheelchairAxleController : MonoBehaviour
 
     private Rigidbody rb;
 
-    private void Start()
+    void Start()
     {
         rb = this.GetComponent<Rigidbody>();
         leftWheel = new Wheel(left, left.GetComponent<SphereCollider>(), left.GetComponent<Rigidbody>(), left.GetComponent<HingeJoint>());
@@ -37,23 +43,44 @@ public class WheelchairAxleController : MonoBehaviour
         leftCasterWheel = new Wheel(leftCaster, leftCaster.GetComponent<SphereCollider>(), leftCaster.GetComponent<Rigidbody>(), leftCaster.GetComponent<HingeJoint>());
         rightCasterWheel = new Wheel(rightCaster, rightCaster.GetComponent<SphereCollider>(), rightCaster.GetComponent<Rigidbody>(), rightCaster.GetComponent<HingeJoint>());
 
-        leftCasterHinge = leftHinge.GetComponent<HingeJoint>();
-        rightCasterHinge = rightHinge.GetComponent<HingeJoint>();
+        wheels = new Wheel[2] { leftWheel, rightWheel };
+        wheelRadius = wheels[0].collider.radius;
 
-        leftCasterWheel.rb.solverIterations = casterSolverIterations;
-        rightCasterWheel.rb.solverIterations = casterSolverIterations;
-        leftHinge.GetComponent<Rigidbody>().solverIterations = casterSolverIterations;
-        rightHinge.GetComponent<Rigidbody>().solverIterations = casterSolverIterations;
+        if (leftHinge && rightHinge)
+        {
+            leftCasterHinge = leftHinge.GetComponent<HingeJoint>();
+            rightCasterHinge = rightHinge.GetComponent<HingeJoint>();
+
+            leftCasterWheel.rb.solverIterations = casterSolverIterations;
+            rightCasterWheel.rb.solverIterations = casterSolverIterations;
+            leftHinge.GetComponent<Rigidbody>().solverIterations = casterSolverIterations;
+            rightHinge.GetComponent<Rigidbody>().solverIterations = casterSolverIterations;
+
+            hinges = new HingeJoint[2] { leftCasterHinge, rightCasterHinge };
+        }
     }
 
     void FixedUpdate()
     {
-        Wheel[] wheels = { leftWheel, rightWheel };
-        float wheelRadius = wheels[0].collider.radius;
-        Vector2 wheelInput = Vector2.zero;
+        Vector2 wheelInput;
         bool[] gripping = new bool[2] { false, false };
-        bool braking = false;
-        // Obtain wheel velocities from input
+
+        HandleWheelInput(out wheelInput, ref gripping);
+        ApplyWheelForces(ref wheelInput, ref gripping);
+        if (leftHinge && rightHinge)
+        {
+            UpdateCastersSpring();
+        }
+        else
+        {
+            UpdateCastersVisual();
+        }
+
+    }
+
+    private void HandleWheelInput(out Vector2 wheelInput, ref bool[] gripping)
+    {
+        wheelInput = Vector2.zero;
         if (keyboardControl)
         {
             wheelInput = 50.0f * new Vector2(Input.GetAxisRaw("Left wheel"), Input.GetAxisRaw("Right wheel"));
@@ -103,7 +130,10 @@ public class WheelchairAxleController : MonoBehaviour
                 }
             }
         }
+    }
 
+    private void ApplyWheelForces(ref Vector2 wheelInput, ref bool[] gripping)
+    {
         Vector2 angularVel = Mathf.Rad2Deg * new Vector2((wheels[0].wheel.transform.worldToLocalMatrix * wheels[0].rb.angularVelocity).x, (wheels[1].wheel.transform.worldToLocalMatrix * wheels[1].rb.angularVelocity).x);
         Debug.Log("Velocity: " + angularVel);
         for (int i = 0; i < 2; i++)
@@ -122,14 +152,17 @@ public class WheelchairAxleController : MonoBehaviour
             }
         }
 
-        // Set caster wheel angle from estimated velocity in local zx-plane from wheel input
-        Vector2 estVelocity = (new Vector2((angularVel.x + angularVel.y) / 2, (angularVel.x- angularVel.y) / 2) / 360) * 2 * Mathf.PI * wheelRadius;
-        float estSpeed = estVelocity.magnitude;
-        float casterWheelAngle = Mathf.Rad2Deg * Mathf.Atan2(estVelocity.y, estVelocity.x);        
+    }
 
-        HingeJoint[] hinges = { leftCasterHinge, rightCasterHinge };
-        //leftCasterHinge.connectedAnchor = Vector3.zero;
-        //rightCasterHinge.connectedAnchor = Vector3.zero;
+    private void UpdateCastersSpring()
+    {
+        Vector2 angularVel = Mathf.Rad2Deg * new Vector2((wheels[0].wheel.transform.worldToLocalMatrix * wheels[0].rb.angularVelocity).x, (wheels[1].wheel.transform.worldToLocalMatrix * wheels[1].rb.angularVelocity).x);
+
+        // Set caster wheel angle from estimated velocity in local zx-plane from wheel input
+        Vector2 estVelocity = (new Vector2((angularVel.x + angularVel.y) / 2, (angularVel.x - angularVel.y) / 2) / 360) * 2 * Mathf.PI * wheelRadius;
+        float estSpeed = estVelocity.magnitude;
+        float casterWheelAngle = Mathf.Rad2Deg * Mathf.Atan2(estVelocity.y, estVelocity.x);
+
         if (estSpeed > casterHingeSpringSpeedThreshold)
         {
             foreach (var hinge in hinges)
@@ -147,7 +180,19 @@ public class WheelchairAxleController : MonoBehaviour
             leftCasterHinge.useSpring = false;
             rightCasterHinge.useSpring = false;
         }
+    }
 
+    private void UpdateCastersVisual()
+    {
+        Vector2 angularVel = Mathf.Rad2Deg * new Vector2((wheels[0].wheel.transform.worldToLocalMatrix * wheels[0].rb.angularVelocity).x, (wheels[1].wheel.transform.worldToLocalMatrix * wheels[1].rb.angularVelocity).x);
+
+        // Set caster wheel angle from estimated velocity in local zx-plane from wheel input
+        Vector2 estVelocity = (new Vector2((angularVel.x + angularVel.y) / 2, (angularVel.x - angularVel.y) / 2) / 360) * 2 * Mathf.PI * wheelRadius;
+        float estSpeed = estVelocity.magnitude;
+        float casterWheelAngle = Mathf.Rad2Deg * Mathf.Atan2(estVelocity.y, estVelocity.x);
+
+        visualLeftCaster.localRotation = Quaternion.Euler(Vector3.Slerp(Vector3.up * visualLeftCaster.localRotation.y, new Vector3(0.0f, casterWheelAngle, 0.0f), 0.5f));
+        visualRightCaster.localRotation = Quaternion.Euler(Vector3.Slerp(Vector3.up * visualRightCaster.localRotation.y, new Vector3(0.0f, casterWheelAngle, 0.0f), 0.5f));
     }
 
 
