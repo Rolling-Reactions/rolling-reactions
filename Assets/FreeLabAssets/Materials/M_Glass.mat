@@ -141,7 +141,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RotationSpeed: 1
-    - _Smoothness: 1
+    - _Smoothness: 0.98
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -157,8 +157,8 @@ Material:
     - _YScrollSpeed3: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.627451, g: 0.9254902, b: 1, a: 1}
-    - _Color: {r: 0.62745106, g: 0.9254902, b: 1, a: 1}
+    - _BaseColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
+    - _Color: {r: 0.36792448, g: 0.36792448, b: 0.36792448, a: 1}
     - _Color1: {r: 1, g: 1, b: 1, a: 1}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
     - _Color3: {r: 1, g: 1, b: 1, a: 1}
