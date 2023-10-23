@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-using Valve.VR;
-using Valve.VR.InteractionSystem;
+using UnityEngine.XR;
 
+[RequireComponent(typeof(InputData))]
 public class WheelchairAxleController : MonoBehaviour
 {
     public bool keyboardControl = false;
-    public Player player;
+    public GameObject player;
+
+    private InputData inputData;
 
     public GameObject left, right, leftCaster, rightCaster, leftHinge, rightHinge;
     public Transform visualLeftCaster, visualRightCaster;
@@ -31,12 +33,12 @@ public class WheelchairAxleController : MonoBehaviour
     public float breakingThreshold = 20.0f; // angular velocity (deg/s) at which the wheels start breaking
     public float hapticFrequency = 100.0f;
     public float hapticStrength = 0.1f;
-    public SteamVR_Action_Vibration haptics;
 
     private Rigidbody rb;
 
     void Start()
     {
+        inputData = this.GetComponent<InputData>();
         rb = this.GetComponent<Rigidbody>();
         leftWheel = new Wheel(left, left.GetComponent<SphereCollider>(), left.GetComponent<Rigidbody>(), left.GetComponent<HingeJoint>());
         rightWheel = new Wheel(right, right.GetComponent<SphereCollider>(), right.GetComponent<Rigidbody>(), right.GetComponent<HingeJoint>());
@@ -89,16 +91,26 @@ public class WheelchairAxleController : MonoBehaviour
         }
         else
         {
-            SteamVR_Action_Pose pose = SteamVR_Input.GetPoseAction("Pose");
-            SteamVR_Action_Boolean grip = SteamVR_Input.GetBooleanAction("GrabGrip");
+            inputData._leftController.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 leftPos);
+            inputData._leftController.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 leftVel);
+            inputData._leftController.TryGetFeatureValue(CommonUsages.gripButton, out bool leftGrip);
+            inputData._rightController.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 rightPos);
+            inputData._rightController.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 rightVel);
+            inputData._rightController.TryGetFeatureValue(CommonUsages.gripButton, out bool rightGrip);
+            bool[] grip = new bool[2] { leftGrip, rightGrip };
+            Vector3[] handPositions = new Vector3[2] { leftPos, rightPos };
+            Vector3[] handVels = new Vector3[2] { leftVel, rightVel };
 
-            SteamVR_Input_Sources[] inputHands = { SteamVR_Input_Sources.LeftHand, SteamVR_Input_Sources.RightHand };
+            if (grip[0] || grip[1])
+            {
+                Debug.Log("Pos " + handPositions[0].ToString() + " " + handPositions[1].ToString());
+                Debug.Log("Vel: " + handVels[0].ToString() + " " + handVels[1].ToString());
+            }
+
             for (int i = 0; i < 2; i++)
             {
-                SteamVR_Input_Sources inputHand = inputHands[i];
-
                 // Check whether hands are close enough to wheels, both should be in the same local space as they are parented by wheelchair_root
-                Vector3 handPos = player.transform.localPosition + pose.GetLocalPosition(inputHand);
+                Vector3 handPos = player.transform.localPosition + handPositions[i];
                 Vector3 wheelPos = wheels[i].collider.transform.localPosition;
 
                 // Find distance from center of weel in the radial direction
@@ -108,16 +120,16 @@ public class WheelchairAxleController : MonoBehaviour
                 // Find tangent direction of wheel at hand position
                 Vector3 wheelTangentDir = Vector3.Cross(Vector3.Normalize(handPos - wheelPos), -Vector3.right);
                 // Find applied velocity from the controller in tangent direction
-                float wheelTangentVel = Vector3.Dot(pose.GetVelocity(inputHand), wheelTangentDir);
+                float wheelTangentVel = Vector3.Dot(handVels[i], wheelTangentDir);
 
                 // Find current rb angular velocity and angular velocity apply from input tangent velocity
                 float angularvel = wheelTangentVel / (2 * Mathf.PI * wheelRadialDist) * 360;
 
                 if (Mathf.Abs(wheelRadialDist - wheelRadius) < wheelGripRadius && wheelLateralDist < wheelGripWidth)
                 {
-                    haptics.Execute(0, Time.fixedDeltaTime, hapticFrequency, hapticStrength, inputHands[i]);
+                    //haptics.Execute(0, Time.fixedDeltaTime, hapticFrequency, hapticStrength, inputHands[i]);
 
-                    if (grip.GetState(inputHand))
+                    if (grip[i])
                     {
                         gripping[i] = true;
                         if (Mathf.Abs(angularvel) > breakingThreshold)
@@ -135,7 +147,7 @@ public class WheelchairAxleController : MonoBehaviour
     private void ApplyWheelForces(ref Vector2 wheelInput, ref bool[] gripping)
     {
         Vector2 angularVel = Mathf.Rad2Deg * new Vector2((wheels[0].wheel.transform.worldToLocalMatrix * wheels[0].rb.angularVelocity).x, (wheels[1].wheel.transform.worldToLocalMatrix * wheels[1].rb.angularVelocity).x);
-        Debug.Log("Velocity: " + angularVel);
+        //Debug.Log("Velocity: " + angularVel);
         for (int i = 0; i < 2; i++)
         {
             if (gripping[i])
