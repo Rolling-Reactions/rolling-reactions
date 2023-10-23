@@ -176,6 +176,21 @@ public class WheelchairAxleController : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < 2; i++)
+        {
+            if (Mathf.Abs(angularVel[i]) > 20)
+            {
+                AudioSource audio;
+                if (i == 0)
+                    audio = left.GetComponent<AudioSource>();
+                else
+                    audio = right.GetComponent<AudioSource>();
+
+                audio.volume = Mathf.Clamp01(angularVel[i] / 180);
+                if (!audio.isPlaying) audio.Play();
+            }
+        }
+
     }
 
     private void UpdateCastersSpring()
