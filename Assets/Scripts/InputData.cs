@@ -5,23 +5,21 @@ using UnityEngine.XR;
 
 public class InputData : MonoBehaviour
 {
-    public InputDevice _rightController;
-    public InputDevice _leftController;
+    public InputDevice[] controllers = new InputDevice[2];
     public InputDevice _HMD;
 
 
     void Update()
     {
-        if (!_rightController.isValid || !_leftController.isValid || !_HMD.isValid)
+        if (!controllers[0].isValid || !controllers[1].isValid || !_HMD.isValid)
             InitializeInputDevices();
     }
     private void InitializeInputDevices()
     {
-
-        if (!_rightController.isValid)
-            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, ref _rightController);
-        if (!_leftController.isValid)
-            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Left, ref _leftController);
+        if (!controllers[0].isValid)
+            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Left, ref controllers[0]);
+        if (!controllers[1].isValid)
+            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, ref controllers[1]);
         if (!_HMD.isValid)
             InitializeInputDevice(InputDeviceCharacteristics.HeadMounted, ref _HMD);
     }

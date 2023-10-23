@@ -12,6 +12,10 @@ public class WheelchairAxleController : MonoBehaviour
     public GameObject player;
 
     private InputData inputData;
+    private Vector3[] handPositions;
+    private Vector3[] handVels;
+    private bool[] gripButton;
+
 
     public GameObject left, right, leftCaster, rightCaster, leftHinge, rightHinge;
     public Transform visualLeftCaster, visualRightCaster;
@@ -39,6 +43,10 @@ public class WheelchairAxleController : MonoBehaviour
     void Start()
     {
         inputData = this.GetComponent<InputData>();
+        handPositions = new Vector3[2] { Vector3.zero, Vector3.zero };
+        handVels = new Vector3[2] { Vector3.zero, Vector3.zero };
+        gripButton = new bool[2] { false, false };
+
         rb = this.GetComponent<Rigidbody>();
         leftWheel = new Wheel(left, left.GetComponent<SphereCollider>(), left.GetComponent<Rigidbody>(), left.GetComponent<HingeJoint>());
         rightWheel = new Wheel(right, right.GetComponent<SphereCollider>(), right.GetComponent<Rigidbody>(), right.GetComponent<HingeJoint>());
@@ -91,24 +99,24 @@ public class WheelchairAxleController : MonoBehaviour
         }
         else
         {
-            inputData._leftController.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 leftPos);
-            inputData._leftController.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 leftVel);
-            inputData._leftController.TryGetFeatureValue(CommonUsages.gripButton, out bool leftGrip);
-            inputData._rightController.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 rightPos);
-            inputData._rightController.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 rightVel);
-            inputData._rightController.TryGetFeatureValue(CommonUsages.gripButton, out bool rightGrip);
-            bool[] grip = new bool[2] { leftGrip, rightGrip };
-            Vector3[] handPositions = new Vector3[2] { leftPos, rightPos };
-            Vector3[] handVels = new Vector3[2] { leftVel, rightVel };
-
-            if (grip[0] || grip[1])
-            {
-                Debug.Log("Pos " + handPositions[0].ToString() + " " + handPositions[1].ToString());
-                Debug.Log("Vel: " + handVels[0].ToString() + " " + handVels[1].ToString());
-            }
-
             for (int i = 0; i < 2; i++)
             {
+                if (inputData.controllers[i].TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 pos))
+                    handPositions[i] = pos;
+                else
+                    handPositions[i] = Vector3.zero;
+
+                if (inputData.controllers[i].TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 vel))
+                    handVels[i] = vel;
+                else
+                    handVels[i] = Vector3.zero;
+
+                if (inputData.controllers[i].TryGetFeatureValue(CommonUsages.gripButton, out bool gripVal))
+                    gripButton[i] = gripVal;
+                else
+                    gripButton[i] = false;
+
+
                 // Check whether hands are close enough to wheels, both should be in the same local space as they are parented by wheelchair_root
                 Vector3 handPos = player.transform.localPosition + handPositions[i];
                 Vector3 wheelPos = wheels[i].collider.transform.localPosition;
@@ -127,9 +135,8 @@ public class WheelchairAxleController : MonoBehaviour
 
                 if (Mathf.Abs(wheelRadialDist - wheelRadius) < wheelGripRadius && wheelLateralDist < wheelGripWidth)
                 {
-                    //haptics.Execute(0, Time.fixedDeltaTime, hapticFrequency, hapticStrength, inputHands[i]);
-
-                    if (grip[i])
+                    inputData.controllers[i].SendHapticImpulse(0, hapticStrength, Time.fixedDeltaTime);
+                    if (gripButton[i])
                     {
                         gripping[i] = true;
                         if (Mathf.Abs(angularvel) > breakingThreshold)
@@ -141,6 +148,11 @@ public class WheelchairAxleController : MonoBehaviour
                     }
                 }
             }
+
+            Debug.Log("Grip: " + gripButton[0] + " " + gripButton[1]);
+            Debug.Log("Pos " + handPositions[0].ToString() + " " + handPositions[1].ToString());
+            Debug.Log("Vel: " + handVels[0].ToString() + " " + handVels[1].ToString());
+
         }
     }
 
