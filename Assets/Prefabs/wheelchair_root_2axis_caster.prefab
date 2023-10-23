@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5892488979922986092}
   - component: {fileID: 5980663466991516835}
   - component: {fileID: 2025914419037098421}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Right caster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0, y: -0.049999997, z: -0.049999952}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 527420667348047477}
   - component: {fileID: 9092525776559091297}
   - component: {fileID: 8613693244420806052}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Spokes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 449934776219748645}
   - component: {fileID: 6511113635639379544}
   - component: {fileID: 5034216487902428614}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Torus.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 5696870468744695272}
   - component: {fileID: 7801425819441273365}
   - component: {fileID: 4624368291446002709}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 7398768276565394681}
   - component: {fileID: 4497412824992481544}
   - component: {fileID: 6553940796766923269}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Spokes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -880,7 +880,7 @@ GameObject:
   - component: {fileID: 1425250420898719660}
   - component: {fileID: 589215624469436807}
   - component: {fileID: 3997420765562186181}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1047,7 +1047,7 @@ GameObject:
   - component: {fileID: 7949556591801479171}
   - component: {fileID: 4851906628232641496}
   - component: {fileID: 7423660028870718109}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Left caster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1130,7 +1130,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -0.000000059604645, y: -0.049999997, z: -0.049999952}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -1332,7 +1332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4792725597797253545}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: CasterWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1367,7 +1367,7 @@ GameObject:
   - component: {fileID: 2375340571762361516}
   - component: {fileID: 586588971054897412}
   - component: {fileID: 2828246295416331818}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Torus.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1699,7 +1699,7 @@ GameObject:
   - component: {fileID: 7165728551395236879}
   - component: {fileID: 1591098652099514500}
   - component: {fileID: 2676071961315543050}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Fork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1782,7 +1782,7 @@ GameObject:
   - component: {fileID: 3420414272872316930}
   - component: {fileID: 3297281406184082821}
   - component: {fileID: 971014102076724883}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Torus.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2114,7 +2114,7 @@ GameObject:
   - component: {fileID: 5075698529011683650}
   - component: {fileID: 2189081447426608441}
   - component: {fileID: 2951950412690589663}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Fork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2363,7 +2363,7 @@ GameObject:
   - component: {fileID: 469271536483351887}
   - component: {fileID: 8228241138728584321}
   - component: {fileID: 7444257332786702841}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2446,7 +2446,7 @@ GameObject:
   - component: {fileID: 6715495791897270774}
   - component: {fileID: 6450355913218035127}
   - component: {fileID: 6779008864043857912}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Spokes2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2529,7 +2529,7 @@ GameObject:
   - component: {fileID: 2286413577227505958}
   - component: {fileID: 1006405999990903314}
   - component: {fileID: 683774785387118115}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Torus.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2695,7 +2695,7 @@ GameObject:
   - component: {fileID: 4362389515267518483}
   - component: {fileID: 7532581994457395871}
   - component: {fileID: 8868470675238291310}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Left caster turn axle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2757,7 +2757,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -0.2500001, y: -0.2, z: 0.40000013}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -3108,7 +3108,7 @@ GameObject:
   - component: {fileID: 994901771334103691}
   - component: {fileID: 5371938246341904756}
   - component: {fileID: 7598657821946572360}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Spokes2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3441,7 +3441,7 @@ GameObject:
   - component: {fileID: 5351211354283961581}
   - component: {fileID: 4200504484211168145}
   - component: {fileID: 7698621257330012173}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Right wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3726,7 +3726,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6456784819866675518}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Wheel.blend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3764,7 +3764,7 @@ GameObject:
   - component: {fileID: 6048284206775689104}
   - component: {fileID: 8985677683976090088}
   - component: {fileID: 7420976611076377200}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Right caster turn axle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3826,7 +3826,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0.24999997, y: -0.2, z: 0.40000013}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -3864,7 +3864,7 @@ GameObject:
   - component: {fileID: 1356300265328910194}
   - component: {fileID: 3993869789703336161}
   - component: {fileID: 5252700715989272601}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4031,7 +4031,7 @@ GameObject:
   - component: {fileID: 8597569130372593605}
   - component: {fileID: 1918299934374332765}
   - component: {fileID: 231769136576700849}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Left wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4150,7 +4150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8605764638464552622}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4185,7 +4185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5170749629489570106}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: CasterWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4550,7 +4550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3422240527765835034}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Wheel.blend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4590,6 +4590,7 @@ GameObject:
   - component: {fileID: 1549924789500517319}
   - component: {fileID: 4351391526770378042}
   - component: {fileID: 3240698995094424432}
+  - component: {fileID: 1234087092390328743}
   m_Layer: 6
   m_Name: wheelchair_root_2axis_caster
   m_TagString: Untagged
@@ -4612,7 +4613,7 @@ Transform:
   m_Children:
   - {fileID: 490144194877298222}
   - {fileID: 8605764638464552622}
-  - {fileID: 7509410126084403763}
+  - {fileID: 10531303558603697}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!54 &795461923186065033
@@ -4667,7 +4668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyboardControl: 0
-  player: {fileID: 4432647391929455336}
+  player: {fileID: 6165515586271888234}
   left: {fileID: 7459562677922444819}
   right: {fileID: 6005579225903580423}
   leftCaster: {fileID: 1998833413237897092}
@@ -4703,8 +4704,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.4, y: 0.2, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.6, y: 0.8, z: 0.75}
+  m_Center: {x: 0, y: 0.15, z: -0.03}
+--- !u!65 &1234087092390328743
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8721066708163582836}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.15, z: 0.25}
+  m_Center: {x: 0, y: -0.2, z: 0.4}
 --- !u!1 &8820156396001604182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4954,7 +4976,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &4636248244043065178
+--- !u!1001 &2132385950871003924
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -4962,47 +4984,47 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7257962009504798305}
     m_Modifications:
-    - target: {fileID: 2909760284066076009, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
+    - target: {fileID: 2139961422314127525, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2909760284066076009, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
+    - target: {fileID: 2139961422314127525, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.35
       objectReference: {fileID: 0}
-    - target: {fileID: 2909760284066076009, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
+    - target: {fileID: 2139961422314127525, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2909760284066076009, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
+    - target: {fileID: 2139961422314127525, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2909760284066076009, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
+    - target: {fileID: 2139961422314127525, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2909760284066076009, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
+    - target: {fileID: 2139961422314127525, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2909760284066076009, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
+    - target: {fileID: 2139961422314127525, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2909760284066076009, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
+    - target: {fileID: 2139961422314127525, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2909760284066076009, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
+    - target: {fileID: 2139961422314127525, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2909760284066076009, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
+    - target: {fileID: 2139961422314127525, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9067063709728470450, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
+    - target: {fileID: 5190273754993647742, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
@@ -5010,14 +5032,14 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
---- !u!1 &4432647391929455336 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9067063709728470450, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
-  m_PrefabInstance: {fileID: 4636248244043065178}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7509410126084403763 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
+--- !u!4 &10531303558603697 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2909760284066076009, guid: 1d93bfaafeb5fb34ca0951c6aad14e1b, type: 3}
-  m_PrefabInstance: {fileID: 4636248244043065178}
+  m_CorrespondingSourceObject: {fileID: 2139961422314127525, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
+  m_PrefabInstance: {fileID: 2132385950871003924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6165515586271888234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5190273754993647742, guid: 44823cd86d2c39d45a6fe5bbd96ee46a, type: 3}
+  m_PrefabInstance: {fileID: 2132385950871003924}
   m_PrefabAsset: {fileID: 0}
