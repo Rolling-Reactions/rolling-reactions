@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof(InputData))]
 public class WheelchairAxleController : MonoBehaviour
@@ -29,8 +30,6 @@ public class WheelchairAxleController : MonoBehaviour
     private float wheelRadius;
     HingeJoint[] hinges;
 
-
-
     public float wheelGripRadius = 0.15f; // the area in which you can grab the wheels
     public float wheelGripWidth = 0.2f; // the area in which you can grab the wheels
     public float breakingThreshold = 20.0f; // angular velocity (deg/s) at which the wheels start breaking
@@ -38,6 +37,7 @@ public class WheelchairAxleController : MonoBehaviour
     public float hapticStrength = 0.1f;
 
     private Rigidbody rb;
+    private bool isKinematic = false;
 
     void Start()
     {
@@ -46,7 +46,6 @@ public class WheelchairAxleController : MonoBehaviour
         handVels = new Vector3[2] { Vector3.zero, Vector3.zero };
         gripButton = new bool[2] { false, false };
 
-        rb = this.GetComponent<Rigidbody>();
         leftWheel = new Wheel(left, left.GetComponent<SphereCollider>(), left.GetComponent<Rigidbody>(), left.GetComponent<HingeJoint>());
         rightWheel = new Wheel(right, right.GetComponent<SphereCollider>(), right.GetComponent<Rigidbody>(), right.GetComponent<HingeJoint>());
         leftCasterWheel = new Wheel(leftCaster, leftCaster.GetComponent<SphereCollider>(), leftCaster.GetComponent<Rigidbody>(), leftCaster.GetComponent<HingeJoint>());
@@ -67,6 +66,8 @@ public class WheelchairAxleController : MonoBehaviour
 
             hinges = new HingeJoint[2] { leftCasterHinge, rightCasterHinge };
         }
+
+        rb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
@@ -84,7 +85,6 @@ public class WheelchairAxleController : MonoBehaviour
         {
             UpdateCastersVisual();
         }
-        lockToGlassBox();   
 
     }
 
@@ -148,11 +148,6 @@ public class WheelchairAxleController : MonoBehaviour
                     }
                 }
             }
-
-            //Debug.Log("Grip: " + gripButton[0] + " " + gripButton[1]);
-            //Debug.Log("Pos " + handPositions[0].ToString() + " " + handPositions[1].ToString());
-            //Debug.Log("Vel: " + handVels[0].ToString() + " " + handVels[1].ToString());
-
         }
     }
 
@@ -183,7 +178,7 @@ public class WheelchairAxleController : MonoBehaviour
         Vector2 angularVel = Mathf.Rad2Deg * new Vector2((wheels[0].wheel.transform.worldToLocalMatrix * wheels[0].rb.angularVelocity).x, (wheels[1].wheel.transform.worldToLocalMatrix * wheels[1].rb.angularVelocity).x);
 
         // Set caster wheel angle from estimated velocity in local zx-plane from wheel input
-        Vector2 estVelocity = (new Vector2((angularVel.x + angularVel.y) / 2, (angularVel.x - angularVel.y) / 2) / 360) * 2 * Mathf.PI * wheelRadius;
+        Vector2 estVelocity = new Vector2((angularVel.x + angularVel.y) / 2, (angularVel.x - angularVel.y) / 2) / 360 * (2 * Mathf.PI * wheelRadius);
         float estSpeed = estVelocity.magnitude;
         float casterWheelAngle = Mathf.Rad2Deg * Mathf.Atan2(estVelocity.y, estVelocity.x);
 
@@ -218,15 +213,20 @@ public class WheelchairAxleController : MonoBehaviour
         visualLeftCaster.localRotation = Quaternion.Euler(Vector3.Slerp(Vector3.up * visualLeftCaster.localRotation.y, new Vector3(0.0f, casterWheelAngle, 0.0f), 0.5f));
         visualRightCaster.localRotation = Quaternion.Euler(Vector3.Slerp(Vector3.up * visualRightCaster.localRotation.y, new Vector3(0.0f, casterWheelAngle, 0.0f), 0.5f));
     }
-    private void lockToGlassBox()
-    {
-    }
 
-    private void OnTriggerEnter(Collider other)
+    public void ToggleSnapToFumehood(HoverEnterEventArgs args)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Fume hood"))
+        Debug.Log("Pressed");
+        isKinematic = !isKinematic;
+        foreach (var childrb in GetComponentsInChildren<Rigidbody>())
         {
+            childrb.isKinematic = isKinematic;
+        }
 
+        if (isKinematic)
+        {
+            transform.position = args.interactable.GetComponentsInChildren<Transform>()[1].position;
+            transform.rotation = args.interactable.GetComponentsInChildren<Transform>()[1].rotation;
         }
     }
 
