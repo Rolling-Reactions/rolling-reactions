@@ -10,7 +10,6 @@ public class WheelchairAxleController : MonoBehaviour
 {
     public bool keyboardControl = false;
     public GameObject player;
-
     private InputData inputData;
     private Vector3[] handPositions;
     private Vector3[] handVels;
@@ -85,6 +84,7 @@ public class WheelchairAxleController : MonoBehaviour
         {
             UpdateCastersVisual();
         }
+        lockToGlassBox();   
 
     }
 
@@ -149,9 +149,9 @@ public class WheelchairAxleController : MonoBehaviour
                 }
             }
 
-            Debug.Log("Grip: " + gripButton[0] + " " + gripButton[1]);
-            Debug.Log("Pos " + handPositions[0].ToString() + " " + handPositions[1].ToString());
-            Debug.Log("Vel: " + handVels[0].ToString() + " " + handVels[1].ToString());
+            //Debug.Log("Grip: " + gripButton[0] + " " + gripButton[1]);
+            //Debug.Log("Pos " + handPositions[0].ToString() + " " + handPositions[1].ToString());
+            //Debug.Log("Vel: " + handVels[0].ToString() + " " + handVels[1].ToString());
 
         }
     }
@@ -218,7 +218,17 @@ public class WheelchairAxleController : MonoBehaviour
         visualLeftCaster.localRotation = Quaternion.Euler(Vector3.Slerp(Vector3.up * visualLeftCaster.localRotation.y, new Vector3(0.0f, casterWheelAngle, 0.0f), 0.5f));
         visualRightCaster.localRotation = Quaternion.Euler(Vector3.Slerp(Vector3.up * visualRightCaster.localRotation.y, new Vector3(0.0f, casterWheelAngle, 0.0f), 0.5f));
     }
+    private void lockToGlassBox()
+    {
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Fume hood"))
+        {
+
+        }
+    }
 
     struct Wheel
     {
