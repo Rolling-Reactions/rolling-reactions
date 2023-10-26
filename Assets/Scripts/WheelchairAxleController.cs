@@ -216,7 +216,6 @@ public class WheelchairAxleController : MonoBehaviour
 
     public void ToggleSnapToFumehood(HoverEnterEventArgs args)
     {
-        Debug.Log("Pressed");
         isKinematic = !isKinematic;
         foreach (var childrb in GetComponentsInChildren<Rigidbody>())
         {
