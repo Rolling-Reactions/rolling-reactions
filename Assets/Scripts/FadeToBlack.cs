@@ -17,6 +17,7 @@ public class FadeToBlack : MonoBehaviour
         image = GetComponent<RawImage>();
         image.enabled = false;
     }
+
     void Update()
     {
         if (isFading)
