@@ -1068,7 +1068,6 @@ GameObject:
   - component: {fileID: 7069806535845954878}
   - component: {fileID: 7538729733542625904}
   - component: {fileID: 6432000060702819394}
-  - component: {fileID: 8012215602484078444}
   m_Layer: 0
   m_Name: tap001
   m_TagString: Untagged
@@ -1155,27 +1154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emitter: {fileID: 1435263194160649463}
   turningOn: 1
---- !u!65 &8012215602484078444
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6827587856728891801}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 28.857784, y: 22.868559, z: 5.176891}
-  m_Center: {x: -0.0000028610202, y: -0.000071525574, z: 0.000007867813}
 --- !u!1 &7427129122144498161
 GameObject:
   m_ObjectHideFlags: 0
