@@ -171,6 +171,33 @@ public class WheelchairAxleController : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < 2; i++)
+        {
+            // sounds for spinning wheel
+            if (Mathf.Abs(angularVel[i]) > 20)
+            {
+                AudioSource audio = wheels[i].wheel.GetComponents<AudioSource>()[0];
+
+                audio.volume = Mathf.Clamp01(angularVel[i] / 360);
+                audio.loop = true;
+                if (!audio.isPlaying) audio.Play();
+            } else
+            {
+                AudioSource audio = wheels[i].wheel.GetComponents<AudioSource>()[0];
+                audio.volume = Mathf.Clamp01(angularVel[i] / 720);
+                audio.loop = false;
+
+            }
+            // sounds for pushing wheel
+            if (Mathf.Abs(wheelInput[i]) > 50)
+            {
+                AudioSource audio = wheels[i].wheel.GetComponents<AudioSource>()[1];
+                audio.volume = 0.25f;
+                if (!audio.isPlaying) audio.Play();
+            }
+        }
+
+
     }
 
     private void UpdateCastersSpring()

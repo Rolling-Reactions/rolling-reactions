@@ -14,7 +14,7 @@ public class oilRefill : MonoBehaviour
     public float turnOffThreshold = 1500;
     public float currentParticles;
     public bool refill;
-    public bool isHeld;  
+    public bool isHeld; //TODO: add detection for glasshold. 
 
     // Start is called before the first frame update
     void Start()
@@ -38,13 +38,4 @@ public class oilRefill : MonoBehaviour
         }
     }
 
-    public void OnSelectEntered()
-    {
-        isHeld = true;
-    }
-
-    public void OnSelectExited()
-    {
-        isHeld = false;
-    }
 }

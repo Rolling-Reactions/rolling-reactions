@@ -10,7 +10,7 @@ public class PouringDetector : MonoBehaviour
     public GameObject emitter;
 
     private bool isPouring = false;
-    public bool isHeld; 
+    public bool isHeld; //TODO: add detection for glasshold.
 
     public AudioSource audioS;
     public AudioClip waterSound;
@@ -59,16 +59,6 @@ public class PouringDetector : MonoBehaviour
         float currentDegree = Vector3.Angle(Vector3.up, transform.up);
         //print(" y degree" + currentDegree);
         return currentDegree;
-    }
-
-    public void OnSelectEntered()
-    {
-        isHeld = true;
-    }
-
-    public void OnSelectExited()
-    {
-        isHeld = false;
     }
 
 }
