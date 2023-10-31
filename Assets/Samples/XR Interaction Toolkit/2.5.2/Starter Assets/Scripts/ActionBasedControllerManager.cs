@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.UI;
 
@@ -86,12 +85,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         [SerializeField]
         [Tooltip("If true, UI scrolling will be enabled.")]
         bool m_UIScrollingEnabled;
-
-        [Space]
-        [Header("Mediation Events")]
-        [SerializeField]
-        [Tooltip("Event fired when the active ray interactor changes between interaction and teleport.")]
-        UnityEvent<IXRRayProvider> m_RayInteractorChanged;
 
         public bool smoothMotionEnabled
         {
@@ -229,8 +222,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
             if (m_RayInteractor != null)
                 m_RayInteractor.gameObject.SetActive(false);
-
-            m_RayInteractorChanged?.Invoke(m_TeleportInteractor);
         }
 
         void OnCancelTeleport(InputAction.CallbackContext context)
@@ -243,8 +234,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
             if (m_RayInteractor != null)
                 m_RayInteractor.gameObject.SetActive(true);
-
-            m_RayInteractorChanged?.Invoke(m_RayInteractor);
 
         }
 

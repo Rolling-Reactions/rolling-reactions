@@ -10,6 +10,11 @@ public class PouringDetector : MonoBehaviour
     public GameObject emitter;
 
     private bool isPouring = false;
+    public bool isHeld; 
+
+    public AudioSource audioS;
+    public AudioClip waterSound;
+
 
     private void Update()
     {
@@ -33,6 +38,10 @@ public class PouringDetector : MonoBehaviour
     {
         print("start");
         emitter.SetActive(true);
+        audioS.clip = waterSound;
+        audioS.volume = 0.3f;
+        audioS.loop = true;
+        audioS.Play();
 
     }
 
@@ -40,6 +49,8 @@ public class PouringDetector : MonoBehaviour
     {
         print("stop");
         emitter.SetActive(false);
+        audioS.loop = false;
+        audioS.Stop();
     }
 
     private float currentContainerAngle()
@@ -48,6 +59,16 @@ public class PouringDetector : MonoBehaviour
         float currentDegree = Vector3.Angle(Vector3.up, transform.up);
         //print(" y degree" + currentDegree);
         return currentDegree;
+    }
+
+    public void OnSelectEntered()
+    {
+        isHeld = true;
+    }
+
+    public void OnSelectExited()
+    {
+        isHeld = false;
     }
 
 }

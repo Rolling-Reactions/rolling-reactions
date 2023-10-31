@@ -10,12 +10,15 @@ public class oilCheck : MonoBehaviour
     public float reactThreshold = 100;
     private long currentDetectedParticles;
     public bool oilReady;
+    public GameObject insuct1;
+    public GameObject insuct2;
     // Start is called before the first frame update
     void Start()
     {
         deletedLiquid = GetComponent<ZibraLiquidVoid>();
         currentDetectedParticles = 0;
         oilReady = false;
+        insuct1.SetActive(true);
 
     }
 
@@ -27,6 +30,8 @@ public class oilCheck : MonoBehaviour
         if (currentDetectedParticles > reactThreshold)
         {
             oilReady = true;
+            insuct1.SetActive(false);
+            insuct2.SetActive(true);
         }
     }
     public bool oilStatus()
