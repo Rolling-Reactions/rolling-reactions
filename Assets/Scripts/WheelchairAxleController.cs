@@ -178,13 +178,13 @@ public class WheelchairAxleController : MonoBehaviour
             {
                 AudioSource audio = wheels[i].wheel.GetComponents<AudioSource>()[0];
 
-                audio.volume = Mathf.Clamp01(angularVel[i] / 360);
+                audio.volume = Mathf.Clamp01(angularVel[i] / 180);
                 audio.loop = true;
                 if (!audio.isPlaying) audio.Play();
             } else
             {
                 AudioSource audio = wheels[i].wheel.GetComponents<AudioSource>()[0];
-                audio.volume = Mathf.Clamp01(angularVel[i] / 720);
+                audio.volume = Mathf.Clamp01(angularVel[i] / 180);
                 audio.loop = false;
 
             }
@@ -192,7 +192,7 @@ public class WheelchairAxleController : MonoBehaviour
             if (Mathf.Abs(wheelInput[i]) > 50)
             {
                 AudioSource audio = wheels[i].wheel.GetComponents<AudioSource>()[1];
-                audio.volume = 0.25f;
+                audio.volume = 0.5f;
                 if (!audio.isPlaying) audio.Play();
             }
         }
