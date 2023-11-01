@@ -241,7 +241,7 @@ public class WheelchairAxleController : MonoBehaviour
         visualRightCaster.localRotation = Quaternion.Euler(Vector3.Slerp(Vector3.up * visualRightCaster.localRotation.y, new Vector3(0.0f, casterWheelAngle, 0.0f), 0.5f));
     }
 
-    public void ToggleSnapToFumehood(HoverEnterEventArgs args)
+    public void ToggleSnapToFumehood(SelectEnterEventArgs args)
     {
         isKinematic = !isKinematic;
         foreach (var childrb in GetComponentsInChildren<Rigidbody>())

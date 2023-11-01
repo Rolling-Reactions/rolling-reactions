@@ -781,7 +781,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9167677046847058652}
-  - component: {fileID: 5570948241162088161}
+  - component: {fileID: 3367894390883792126}
   m_Layer: 0
   m_Name: Laboratory bench 2B
   m_TagString: Untagged
@@ -808,33 +808,27 @@ Transform:
   - {fileID: 1429608750464820959}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 180, y: 90, z: 180}
---- !u!54 &5570948241162088161
-Rigidbody:
+--- !u!65 &3367894390883792126
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3195362225725807395}
-  serializedVersion: 4
-  m_Mass: 100
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.64553756, y: 0.8953028, z: 3.648832}
+  m_Center: {x: 1.7177825, y: 1.4343483, z: 0.59153783}
 --- !u!1 &3661250582806937074
 GameObject:
   m_ObjectHideFlags: 0
