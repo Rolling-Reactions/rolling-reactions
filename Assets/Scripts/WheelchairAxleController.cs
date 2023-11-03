@@ -37,7 +37,7 @@ public class WheelchairAxleController : MonoBehaviour
     public float hapticStrength = 0.1f;
 
     private Rigidbody rb;
-    private bool isKinematic = false;
+    public bool isKinematic = false;
 
     void Start()
     {

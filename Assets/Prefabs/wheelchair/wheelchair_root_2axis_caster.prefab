@@ -4861,6 +4861,7 @@ MonoBehaviour:
   breakingThreshold: 10
   hapticFrequency: 200
   hapticStrength: 0.05
+  isKinematic: 0
 --- !u!65 &3240698995094424432
 BoxCollider:
   m_ObjectHideFlags: 0
